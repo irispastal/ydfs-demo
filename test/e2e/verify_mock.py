@@ -1,4 +1,5 @@
 import argparse
+import ctypes
 import json
 import os
 import secrets
@@ -12,7 +13,11 @@ from urllib.request import urlopen
 env = dict(os.environ, YDFS_AUTH=secrets.token_hex(16))
 parser = argparse.ArgumentParser(description="Run the local mock suite and check protocol evidence.")
 parser.add_argument("mount")
-drive = parser.parse_args().mount
+parser.add_argument("--network-drive", action="store_true")
+args = parser.parse_args()
+drive = args.mount
+if args.network_drive and os.name != "nt":
+    parser.error("--network-drive requires Windows")
 root = Path(drive.rstrip("\\") + "\\" if os.name == "nt" else drive)
 if os.name == "nt" and root.exists():
     parser.error("the drive letter is already in use")
@@ -40,10 +45,17 @@ def stop(process):
         subprocess.run(["fusermount", "-u", drive], check=True)
 
 def mount():
-    process = subprocess.Popen([sys.executable, "-m", "cmd.ydfs", "--mount", drive,
-                                "--base-url", url], env=env)
+    command = [sys.executable, "-m", "cmd.ydfs", "--mount", drive, "--base-url", url]
+    if args.network_drive:
+        command.append("--network-drive")
+    process = subprocess.Popen(command, env=env)
     processes.append(process)
     wait_until(lambda: os.path.ismount(root) if os.name != "nt" else root.is_dir())
+    if args.network_drive:
+        drive_type = ctypes.windll.kernel32.GetDriveTypeW(str(root))
+        if drive_type != 4:  # DRIVE_REMOTE
+            raise RuntimeError(f"Expected a network drive, got Windows drive type {drive_type}")
+        print(f"{root} is a Windows network drive", flush=True)
     return process
 
 def e2e(*args):

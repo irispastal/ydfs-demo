@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import secrets
 import sys
 from functools import partial
 from pathlib import Path
@@ -20,6 +21,7 @@ def main():
     parser.add_argument("--config", type=Path, help="JSON configuration (default with no arguments: ydfs.local.json)")
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--read-only", action="store_true")
+    parser.add_argument("--network-drive", action="store_true", help="Mount as a Windows network drive")
     parser.add_argument("--base-url")
     parser.add_argument("--root-file-id")
     parser.add_argument("--user-domain-id", help="Enable live China Mobile Cloud capacity reporting")
@@ -50,7 +52,7 @@ def main():
                       "hash_algo", "meta_ttl", "block_size", "part_size", "cache_dir", "user_domain_id"}
         for key, value in config.items():
             option = "--" + key.replace("_", "-")
-            if key in {"smoke", "read_only"} and isinstance(value, bool):
+            if key in {"smoke", "read_only", "network_drive"} and isinstance(value, bool):
                 if value:
                     config_options.append(option)
             elif key in value_keys and type(value) in {str, int, float}:
@@ -60,10 +62,14 @@ def main():
         argv = config_options + argv
     args = parser.parse_args(argv)
     windows = os.name == "nt"
+    if args.network_drive and not windows:
+        parser.error("--network-drive requires Windows")
     options = {"uid": -1, "gid": -1, "volname": "YDFS"} if windows else {}
     if windows:
         # Windows checks the reported filesystem name when elevating executables.
         options["ExactFileSystemName"] = "NTFS"
+    if args.network_drive:
+        options["VolumePrefix"] = f"/ydfs/cloud-{secrets.token_hex(6)}"
     if args.smoke:
         FUSE(FixedFile(), args.mount, foreground=True, ro=True, **options)
         return
