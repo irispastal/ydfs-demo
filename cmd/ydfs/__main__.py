@@ -22,6 +22,7 @@ def main():
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--read-only", action="store_true")
     parser.add_argument("--network-drive", action="store_true", help="Mount as a Windows network drive")
+    parser.add_argument("--network-name", help="Use a fixed Windows network share name")
     parser.add_argument("--base-url")
     parser.add_argument("--root-file-id")
     parser.add_argument("--user-domain-id", help="Enable live China Mobile Cloud capacity reporting")
@@ -49,7 +50,8 @@ def main():
             parser.error("authorization must be a string")
         config_options = []
         value_keys = {"mount", "base_url", "root_file_id", "client_info", "app_channel",
-                      "hash_algo", "meta_ttl", "block_size", "part_size", "cache_dir", "user_domain_id"}
+                      "hash_algo", "meta_ttl", "block_size", "part_size", "cache_dir", "user_domain_id",
+                      "network_name"}
         for key, value in config.items():
             option = "--" + key.replace("_", "-")
             if key in {"smoke", "read_only", "network_drive"} and isinstance(value, bool):
@@ -64,12 +66,19 @@ def main():
     windows = os.name == "nt"
     if args.network_drive and not windows:
         parser.error("--network-drive requires Windows")
+    if args.network_name is not None:
+        if not args.network_drive:
+            parser.error("--network-name requires --network-drive")
+        if (not args.network_name.strip() or args.network_name in {".", ".."}
+                or any(c in '\\/:*?"<>|' or ord(c) < 32 for c in args.network_name)):
+            parser.error("invalid network share name")
     options = {"uid": -1, "gid": -1, "volname": "YDFS"} if windows else {}
     if windows:
         # Windows checks the reported filesystem name when elevating executables.
         options["ExactFileSystemName"] = "NTFS"
     if args.network_drive:
-        options["VolumePrefix"] = f"/ydfs/cloud-{secrets.token_hex(6)}"
+        share_name = args.network_name or f"cloud-{secrets.token_hex(6)}"
+        options["VolumePrefix"] = f"/ydfs/{share_name}"
     if args.smoke:
         FUSE(FixedFile(), args.mount, foreground=True, ro=True, **options)
         return

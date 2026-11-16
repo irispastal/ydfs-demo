@@ -53,6 +53,8 @@ T13 在 Windows 用资源管理器复制文件到专用目录，再用记事本�
 
 JSON 使用 `mount`、`base_url`、`root_file_id`、`client_info`、`app_channel` 和 `authorization` 字段。也可用 `--config <路径>` 指定其他 JSON。默认文件已加入 Git 忽略规则。若省略 `authorization`，程序读取 `YDFS_AUTH`。
 
+Windows 网络盘可设置 `"network_drive": true`，并用 `"network_name": "FDFS"` 固定共享名称，资源管理器显示为 `FDFS (\\ydfs)`。对应命令行参数为 `--network-drive --network-name FDFS`；省略名称时每次挂载生成随机共享名。
+
 设置 `user_domain_id` 后，挂载盘通过 `getPersonalDiskInfo` 获取云盘总容量和可用容量，按 MiB 转换后向操作系统报告。容量缓存 60 秒。
 
 使用命令行参数启动时，真实环境的挂载必须使用 HTTPS，传入 --root-file-id 指定已建好的专用测试目录 ID，并用 --client-info、--app-channel 设置实际客户端标识。可以先用 --read-only 挂载。首次真实写入或删除前须确认操作；测试脚本默认在挂载根下创建独立的 ydfs-e2e-* 目录。
