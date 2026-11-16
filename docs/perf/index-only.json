@@ -1,0 +1,83 @@
+{
+  "python": "3.14.3",
+  "platform": "win32",
+  "measured_at": "2026-11-16T08:17:37.830214+00:00",
+  "latency_ms": 15,
+  "repeats": 5,
+  "mount_repeats": 3,
+  "page_size": 100,
+  "scenarios": [
+    {
+      "entries": 3000,
+      "samples": [
+        {
+          "cold_list_ms": 550.857,
+          "child_getattr_ms": 70.502,
+          "warm_list_ms": 0.493,
+          "cold_requests": 31,
+          "total_ms": 621.359
+        },
+        {
+          "cold_list_ms": 568.382,
+          "child_getattr_ms": 70.197,
+          "warm_list_ms": 0.626,
+          "cold_requests": 31,
+          "total_ms": 638.579
+        },
+        {
+          "cold_list_ms": 552.005,
+          "child_getattr_ms": 69.23,
+          "warm_list_ms": 0.59,
+          "cold_requests": 31,
+          "total_ms": 621.235
+        },
+        {
+          "cold_list_ms": 552.344,
+          "child_getattr_ms": 72.922,
+          "warm_list_ms": 0.604,
+          "cold_requests": 31,
+          "total_ms": 625.266
+        },
+        {
+          "cold_list_ms": 566.499,
+          "child_getattr_ms": 74.263,
+          "warm_list_ms": 0.812,
+          "cold_requests": 31,
+          "total_ms": 640.762
+        }
+      ],
+      "median": {
+        "cold_list_ms": 552.344,
+        "child_getattr_ms": 70.502,
+        "warm_list_ms": 0.604,
+        "cold_requests": 31,
+        "total_ms": 625.266
+      },
+      "mounted": {
+        "samples": [
+          {
+            "cold_ms": 819.091,
+            "warm_ms": 131.354,
+            "requests": 31
+          },
+          {
+            "cold_ms": 856.637,
+            "warm_ms": 136.276,
+            "requests": 31
+          },
+          {
+            "cold_ms": 834.639,
+            "warm_ms": 138.342,
+            "requests": 31
+          }
+        ],
+        "median": {
+          "cold_ms": 834.639,
+          "warm_ms": 136.276,
+          "requests": 31
+        }
+      },
+      "page_size": 100
+    }
+  ]
+}

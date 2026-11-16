@@ -1,0 +1,122 @@
+{
+  "before": {
+    "cold_readdir": {
+      "event": "operation",
+      "pid": 93420,
+      "trace": 1,
+      "operation": "readdir",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "local_overlay": 0.005,
+        "http_wait": 539.878,
+        "json_decode": 3.994,
+        "cache_fetch": 552.564,
+        "merge_children": 0.544,
+        "name_lookup": 0.002,
+        "lookup": 18.302,
+        "list_children": 553.174,
+        "names": 0.184
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_miss": 2,
+        "http_pages": 31,
+        "http_items": 3001,
+        "entries": 3000
+      },
+      "status": "ok",
+      "target": "67b42b49a92c",
+      "total_ms": 553.399
+    },
+    "attribute_sample": {
+      "event": "operation",
+      "pid": 93420,
+      "trace": 3001,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.001,
+        "merge_children": 0.474,
+        "name_lookup": 0.545,
+        "lookup": 1.038,
+        "attributes": 0.007
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 2
+      },
+      "status": "ok",
+      "target": "265189bf8c54",
+      "total_ms": 1.059
+    },
+    "attribute_count": 3000,
+    "attribute_stage_totals_ms": {
+      "lookup": 2769.266,
+      "local_overlay": 3.415,
+      "merge_children": 1550.589,
+      "name_lookup": 1153.223,
+      "lock_wait": 2.936,
+      "attributes": 23.744
+    }
+  },
+  "after": {
+    "cold_readdir": {
+      "event": "operation",
+      "pid": 85572,
+      "trace": 1,
+      "operation": "readdir",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "local_overlay": 0.005,
+        "http_wait": 74.226,
+        "json_decode": 3.32,
+        "cache_fetch": 79.225,
+        "cache_index": 1.045,
+        "name_lookup": 0.001,
+        "lookup": 18.149,
+        "merge_children": 0.014,
+        "list_children": 80.354,
+        "names": 0.193
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_miss": 2,
+        "http_pages": 4,
+        "http_items": 3001,
+        "entries": 3000
+      },
+      "status": "ok",
+      "target": "67b42b49a92c",
+      "total_ms": 80.59
+    },
+    "attribute_sample": {
+      "event": "operation",
+      "pid": 85572,
+      "trace": 3001,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.001,
+        "name_lookup": 0.002,
+        "lookup": 0.011,
+        "attributes": 0.003
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 2
+      },
+      "status": "ok",
+      "target": "265189bf8c54",
+      "total_ms": 0.021
+    },
+    "attribute_count": 3000,
+    "attribute_stage_totals_ms": {
+      "lookup": 45.344,
+      "local_overlay": 5.047,
+      "merge_children": 0,
+      "name_lookup": 6.022,
+      "lock_wait": 2.556,
+      "attributes": 15.983
+    }
+  }
+}

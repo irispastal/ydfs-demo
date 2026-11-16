@@ -42,10 +42,12 @@ def stop(process):
     if os.name == "nt" or process is mock:
         process.terminate()
     else:
-        subprocess.run(["fusermount", "-u", drive], check=True)
+        subprocess.run(["fusermount3", "-u", drive], check=True)
 
 def mount():
-    command = [sys.executable, "-m", "cmd.ydfs", "--mount", drive, "--base-url", url]
+    # Keep the 250-entry T10 case exercising multiple pages despite the faster default.
+    command = [sys.executable, "-m", "cmd.ydfs", "--mount", drive, "--base-url", url,
+               "--page-size", "100"]
     if args.network_drive:
         command.append("--network-drive")
     process = subprocess.Popen(command, env=env)
@@ -64,6 +66,7 @@ def e2e(*args):
 
 mock = None
 try:
+    subprocess.run([sys.executable, "-m", "cmd.ydfs", "--version"], check=True)
     mock = subprocess.Popen([sys.executable, "-m", "mock.server", "--port", "0", "--ttl", "3"],
                             env=env, stdout=subprocess.PIPE, text=True)
     processes.append(mock)
@@ -77,13 +80,18 @@ try:
         assert result.stdout.strip()
         executable.unlink()
         print("Windows executable launched from the mounted drive", flush=True)
-    first_code = e2e("--wait-seconds", "5")
+    first_code = e2e("--url-expiry-phase", "prepare")
+    if os.name != "nt":
+        subprocess.run([sys.executable, "test/e2e/fuse3_semantics.py", str(root / suite)], check=True)
+    else:
+        subprocess.run([sys.executable, "test/e2e/windows_semantics.py", str(root / suite)], check=True)
     before = state()
     stop(first)
     first.wait(timeout=10)
     wait_until(lambda: not (root.exists() if os.name == "nt" else os.path.ismount(root)))
     mount()
     second_code = e2e("--case", "T4")
+    expiry_code = e2e("--case", "T11", "--url-expiry-phase", "read", "--wait-seconds", "5")
     after = state()
     folder = next(f for f in after["files"] if f["name"] == suite)
     cases = {f["name"]: f["fileId"] for f in after["files"] if f["parentFileId"] == folder["fileId"]}
@@ -100,7 +108,9 @@ try:
         assert t1["name"] == "a"
         assert any(f["name"] == "b" and f["parentFileId"] == t1["fileId"] for f in after["files"])
         assert commits("T3")[0]["parts"] == [10 * 1048576, 10 * 1048576, 3 * 1048576]
-        ranges = [e for e in events[len(before["events"]):] if e["operation"] == "range"]
+        t3_id = by_case["T3"][0]["fileId"]
+        ranges = [e for e in events[len(before["events"]):]
+                  if e["operation"] == "range" and e["fileId"] == t3_id]
         assert [(e["start"], e["end"]) for e in ranges] == [(8 * 1048576, 12 * 1048576 - 1)]
         revisions = commits("T5")
         assert len(revisions) == 2 and revisions[0]["revisionId"] != revisions[1]["revisionId"]
@@ -114,10 +124,10 @@ try:
         assert sequence == ["complete", "download-url", "range", "download-url", "range"], sequence
         print("Server checks passed for T1 T3 T4 T5 T8 T9 T10 T11", flush=True)
 
-    if not first_code and not second_code:
+    if not first_code and not second_code and not expiry_code:
         evidence()
     cleanup_code = e2e("--cleanup")
-    raise SystemExit(first_code or second_code or cleanup_code)
+    raise SystemExit(first_code or second_code or expiry_code or cleanup_code)
 finally:
     for process in reversed(processes):
         if process.poll() is None:

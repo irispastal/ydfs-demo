@@ -1,5 +1,7 @@
 import argparse
 import json
+import logging
+from logging.handlers import RotatingFileHandler
 import os
 import secrets
 import sys
@@ -7,7 +9,7 @@ from functools import partial
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from fuse import FUSE
+from adapter.binding import BACKEND, FUSE
 
 from adapter.fusefs import FuseFilesystem
 from adapter.smoke import FixedFile
@@ -17,6 +19,7 @@ from core.fs import Filesystem
 
 def main():
     parser = argparse.ArgumentParser(description="Mount a YDFS test filesystem.")
+    parser.add_argument("--version", action="version", version=f"YDFS: {BACKEND}")
     parser.add_argument("--mount", required=True)
     parser.add_argument("--config", type=Path, help="JSON configuration (default with no arguments: ydfs.local.json)")
     parser.add_argument("--smoke", action="store_true")
@@ -30,9 +33,12 @@ def main():
     parser.add_argument("--app-channel", default="ydfs-demo")
     parser.add_argument("--hash-algo", choices=("sha1", "sha256"), default="sha256")
     parser.add_argument("--meta-ttl", type=float, default=5)
+    parser.add_argument("--page-size", type=int, default=1000, help="Directory API page size (1-1000)")
     parser.add_argument("--block-size", type=int, default=4 * MIB)
     parser.add_argument("--part-size", type=int, default=10 * MIB)
     parser.add_argument("--cache-dir", type=Path)
+    parser.add_argument("--log-file", type=Path, help="Also write directory timing logs to this file")
+    parser.add_argument("--log-level", choices=("DEBUG", "INFO", "WARNING", "ERROR"), default="INFO")
     argv = sys.argv[1:] or ["--config", "ydfs.local.json"]
     config_parser = argparse.ArgumentParser(add_help=False)
     config_parser.add_argument("--config", type=Path)
@@ -51,7 +57,7 @@ def main():
         config_options = []
         value_keys = {"mount", "base_url", "root_file_id", "client_info", "app_channel",
                       "hash_algo", "meta_ttl", "block_size", "part_size", "cache_dir", "user_domain_id",
-                      "network_name"}
+                      "network_name", "log_file", "log_level", "page_size"}
         for key, value in config.items():
             option = "--" + key.replace("_", "-")
             if key in {"smoke", "read_only", "network_drive"} and isinstance(value, bool):
@@ -63,6 +69,13 @@ def main():
                 parser.error(f"invalid configuration field: {key}")
         argv = config_options + argv
     args = parser.parse_args(argv)
+    handlers = [logging.StreamHandler()]
+    if args.log_file:
+        args.log_file.parent.mkdir(parents=True, exist_ok=True)
+        handlers.append(RotatingFileHandler(args.log_file, maxBytes=10 * MIB,
+                                           backupCount=3, encoding="utf-8"))
+    logging.basicConfig(level=args.log_level, handlers=handlers,
+                        format="%(asctime)s %(levelname)s %(message)s")
     windows = os.name == "nt"
     if args.network_drive and not windows:
         parser.error("--network-drive requires Windows")
@@ -92,11 +105,13 @@ def main():
         parser.error("remote access requires HTTPS and a dedicated test directory file ID")
     if args.block_size <= 0 or args.meta_ttl < 0:
         parser.error("invalid cache options")
+    if not 1 <= args.page_size <= 1000:
+        parser.error("page size must be between 1 and 1000")
     default_cache = Path(os.environ["LOCALAPPDATA"]) if windows else Path.home() / ".cache"
     cache_dir = args.cache_dir or default_cache / "ydfs"
     cache_dir.mkdir(parents=True, exist_ok=True)
     client = Client(args.base_url, auth, args.client_info, args.app_channel,
-                    args.hash_algo, args.part_size)
+                    args.hash_algo, args.part_size, args.page_size)
     disk_space = None
     if args.user_domain_id:
         disk_client = Client("https://user-njs.yun.139.com/user/disk", auth,

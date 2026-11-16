@@ -1,0 +1,308 @@
+{
+  "measured_at": "2026-11-16T10:02:56.841901+00:00",
+  "read_only": true,
+  "requested_bytes": 32,
+  "samples": [
+    {
+      "target": "704caaa95120",
+      "file_size": 2725780,
+      "entries": 12,
+      "header_hash": "34b9348ecccb09747637e5bdaa744e48362a9e684b260766e49868f2e50cecab",
+      "directory_ms": 0.165,
+      "directory_lock_wait_ms": 0.005,
+      "directory_finished_before_read": true,
+      "read_ms": 159.203,
+      "downloaded_bytes": 65536,
+      "operations": [
+        {
+          "event": "operation",
+          "pid": 80824,
+          "trace": 4,
+          "operation": "probe_directory",
+          "stages_ms": {
+            "lock_wait": 0.005,
+            "lookup": 0.063,
+            "local_overlay": 0.012,
+            "merge_children": 0.001,
+            "list_children": 0.025,
+            "name_lookup": 0.005
+          },
+          "counts": {
+            "cache_hit": 13,
+            "entries": 12,
+            "path_components": 12
+          },
+          "status": "ok",
+          "total_ms": 0.167
+        },
+        {
+          "event": "operation",
+          "pid": 80824,
+          "trace": 3,
+          "operation": "probe_read",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "http_wait": 104.917,
+            "json_decode": 0.039,
+            "download_url": 105.103,
+            "range_read": 53.924,
+            "read_blocks": 159.147
+          },
+          "counts": {
+            "requested_bytes": 32,
+            "probe_reads": 1,
+            "block_cache_miss": 1,
+            "url_requests": 1,
+            "range_requests": 1,
+            "downloaded_bytes": 65536,
+            "returned_bytes": 32
+          },
+          "status": "ok",
+          "total_ms": 159.203
+        }
+      ]
+    },
+    {
+      "target": "704caaa95120",
+      "file_size": 2725780,
+      "entries": 12,
+      "header_hash": "34b9348ecccb09747637e5bdaa744e48362a9e684b260766e49868f2e50cecab",
+      "directory_ms": 0.139,
+      "directory_lock_wait_ms": 0.005,
+      "directory_finished_before_read": true,
+      "read_ms": 158.234,
+      "downloaded_bytes": 65536,
+      "operations": [
+        {
+          "event": "operation",
+          "pid": 80824,
+          "trace": 8,
+          "operation": "probe_directory",
+          "stages_ms": {
+            "lock_wait": 0.005,
+            "lookup": 0.056,
+            "local_overlay": 0.01,
+            "merge_children": 0.001,
+            "list_children": 0.017,
+            "name_lookup": 0.005
+          },
+          "counts": {
+            "cache_hit": 13,
+            "entries": 12,
+            "path_components": 12
+          },
+          "status": "ok",
+          "total_ms": 0.141
+        },
+        {
+          "event": "operation",
+          "pid": 80824,
+          "trace": 7,
+          "operation": "probe_read",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "http_wait": 106.809,
+            "json_decode": 0.033,
+            "download_url": 106.966,
+            "range_read": 51.119,
+            "read_blocks": 158.184
+          },
+          "counts": {
+            "requested_bytes": 32,
+            "probe_reads": 1,
+            "block_cache_miss": 1,
+            "url_requests": 1,
+            "range_requests": 1,
+            "downloaded_bytes": 65536,
+            "returned_bytes": 32
+          },
+          "status": "ok",
+          "total_ms": 158.234
+        }
+      ]
+    },
+    {
+      "target": "704caaa95120",
+      "file_size": 2725780,
+      "entries": 12,
+      "header_hash": "34b9348ecccb09747637e5bdaa744e48362a9e684b260766e49868f2e50cecab",
+      "directory_ms": 0.138,
+      "directory_lock_wait_ms": 0.005,
+      "directory_finished_before_read": true,
+      "read_ms": 176.579,
+      "downloaded_bytes": 65536,
+      "operations": [
+        {
+          "event": "operation",
+          "pid": 80824,
+          "trace": 12,
+          "operation": "probe_directory",
+          "stages_ms": {
+            "lock_wait": 0.005,
+            "lookup": 0.056,
+            "local_overlay": 0.009,
+            "merge_children": 0.001,
+            "list_children": 0.016,
+            "name_lookup": 0.004
+          },
+          "counts": {
+            "cache_hit": 13,
+            "entries": 12,
+            "path_components": 12
+          },
+          "status": "ok",
+          "total_ms": 0.14
+        },
+        {
+          "event": "operation",
+          "pid": 80824,
+          "trace": 11,
+          "operation": "probe_read",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "http_wait": 125.753,
+            "json_decode": 0.032,
+            "download_url": 125.903,
+            "range_read": 50.544,
+            "read_blocks": 176.527
+          },
+          "counts": {
+            "requested_bytes": 32,
+            "probe_reads": 1,
+            "block_cache_miss": 1,
+            "url_requests": 1,
+            "range_requests": 1,
+            "downloaded_bytes": 65536,
+            "returned_bytes": 32
+          },
+          "status": "ok",
+          "total_ms": 176.579
+        }
+      ]
+    },
+    {
+      "target": "704caaa95120",
+      "file_size": 2725780,
+      "entries": 12,
+      "header_hash": "34b9348ecccb09747637e5bdaa744e48362a9e684b260766e49868f2e50cecab",
+      "directory_ms": 0.147,
+      "directory_lock_wait_ms": 0.005,
+      "directory_finished_before_read": true,
+      "read_ms": 222.399,
+      "downloaded_bytes": 65536,
+      "operations": [
+        {
+          "event": "operation",
+          "pid": 80824,
+          "trace": 16,
+          "operation": "probe_directory",
+          "stages_ms": {
+            "lock_wait": 0.005,
+            "lookup": 0.058,
+            "local_overlay": 0.01,
+            "merge_children": 0.001,
+            "list_children": 0.017,
+            "name_lookup": 0.004
+          },
+          "counts": {
+            "cache_hit": 13,
+            "entries": 12,
+            "path_components": 12
+          },
+          "status": "ok",
+          "total_ms": 0.149
+        },
+        {
+          "event": "operation",
+          "pid": 80824,
+          "trace": 15,
+          "operation": "probe_read",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "http_wait": 181.608,
+            "json_decode": 0.037,
+            "download_url": 181.761,
+            "range_read": 40.515,
+            "read_blocks": 222.354
+          },
+          "counts": {
+            "requested_bytes": 32,
+            "probe_reads": 1,
+            "block_cache_miss": 1,
+            "url_requests": 1,
+            "range_requests": 1,
+            "downloaded_bytes": 65536,
+            "returned_bytes": 32
+          },
+          "status": "ok",
+          "total_ms": 222.399
+        }
+      ]
+    },
+    {
+      "target": "704caaa95120",
+      "file_size": 2725780,
+      "entries": 12,
+      "header_hash": "34b9348ecccb09747637e5bdaa744e48362a9e684b260766e49868f2e50cecab",
+      "directory_ms": 0.16,
+      "directory_lock_wait_ms": 0.006,
+      "directory_finished_before_read": true,
+      "read_ms": 134.076,
+      "downloaded_bytes": 65536,
+      "operations": [
+        {
+          "event": "operation",
+          "pid": 80824,
+          "trace": 20,
+          "operation": "probe_directory",
+          "stages_ms": {
+            "lock_wait": 0.006,
+            "lookup": 0.065,
+            "local_overlay": 0.011,
+            "merge_children": 0.001,
+            "list_children": 0.018,
+            "name_lookup": 0.005
+          },
+          "counts": {
+            "cache_hit": 13,
+            "entries": 12,
+            "path_components": 12
+          },
+          "status": "ok",
+          "total_ms": 0.162
+        },
+        {
+          "event": "operation",
+          "pid": 80824,
+          "trace": 19,
+          "operation": "probe_read",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "http_wait": 94.73,
+            "json_decode": 0.034,
+            "download_url": 94.881,
+            "range_read": 39.062,
+            "read_blocks": 134.026
+          },
+          "counts": {
+            "requested_bytes": 32,
+            "probe_reads": 1,
+            "block_cache_miss": 1,
+            "url_requests": 1,
+            "range_requests": 1,
+            "downloaded_bytes": 65536,
+            "returned_bytes": 32
+          },
+          "status": "ok",
+          "total_ms": 134.076
+        }
+      ]
+    }
+  ],
+  "median": {
+    "directory_ms": 0.147,
+    "directory_lock_wait_ms": 0.005,
+    "read_ms": 159.203,
+    "downloaded_bytes": 65536
+  }
+}

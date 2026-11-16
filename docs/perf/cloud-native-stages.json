@@ -1,0 +1,1942 @@
+{
+  "before": [
+    {
+      "event": "operation",
+      "pid": 66544,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 353.015,
+        "json_decode": 0.033,
+        "disk_space_request": 353.353
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 353.376
+    },
+    {
+      "event": "operation",
+      "pid": 66544,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.004,
+        "http_wait": 326.381,
+        "json_decode": 0.262,
+        "cache_fetch": 327.403,
+        "merge_children": 0.025,
+        "name_lookup": 0.006,
+        "lookup": 327.489,
+        "attributes": 0.026
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_miss": 2,
+        "http_pages": 2,
+        "http_items": 14
+      },
+      "status": "ok",
+      "target": "13cb9ceb1aa3",
+      "total_ms": 327.528
+    },
+    {
+      "event": "operation",
+      "pid": 66544,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.002,
+        "merge_children": 0.012,
+        "name_lookup": 0.002,
+        "lookup": 0.025,
+        "http_wait": 137.892,
+        "json_decode": 0.063,
+        "cache_fetch": 138.246,
+        "list_children": 138.295,
+        "names": 0.004,
+        "native_fill": 0.022
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 2,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 2,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 138.349
+    },
+    {
+      "event": "operation",
+      "pid": 66544,
+      "trace": 20,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.002,
+        "merge_children": 0.01,
+        "name_lookup": 0.003,
+        "lookup": 0.028,
+        "list_children": 0.041,
+        "names": 0.002,
+        "native_fill": 0.013
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 3,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 0.085
+    },
+    {
+      "event": "operation",
+      "pid": 66544,
+      "trace": 30,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "local_overlay": 0.003,
+        "http_wait": 446.6,
+        "json_decode": 0.24,
+        "cache_fetch": 447.424,
+        "merge_children": 0.013,
+        "name_lookup": 0.005,
+        "lookup": 447.519,
+        "attributes": 0.015
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_miss": 2,
+        "http_pages": 2,
+        "http_items": 14
+      },
+      "status": "ok",
+      "target": "13cb9ceb1aa3",
+      "total_ms": 447.564
+    },
+    {
+      "event": "operation",
+      "pid": 66544,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "local_overlay": 0.002,
+        "merge_children": 0.014,
+        "name_lookup": 0.003,
+        "lookup": 0.032,
+        "http_wait": 154.652,
+        "json_decode": 0.064,
+        "cache_fetch": 154.999,
+        "list_children": 155.062,
+        "names": 0.002,
+        "native_fill": 0.02
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 2,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 2,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 155.118
+    },
+    {
+      "event": "operation",
+      "pid": 66544,
+      "trace": 39,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.002,
+        "merge_children": 0.009,
+        "name_lookup": 0.002,
+        "lookup": 0.023,
+        "list_children": 0.033,
+        "names": 0.002,
+        "native_fill": 0.012
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 3,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 0.068
+    },
+    {
+      "event": "operation",
+      "pid": 95272,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 143.079,
+        "json_decode": 0.033,
+        "disk_space_request": 143.448
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 143.473
+    },
+    {
+      "event": "operation",
+      "pid": 95272,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.004,
+        "http_wait": 351.434,
+        "json_decode": 0.23,
+        "cache_fetch": 352.365,
+        "merge_children": 0.022,
+        "name_lookup": 0.006,
+        "lookup": 352.446,
+        "attributes": 0.022
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_miss": 2,
+        "http_pages": 2,
+        "http_items": 14
+      },
+      "status": "ok",
+      "target": "13cb9ceb1aa3",
+      "total_ms": 352.482
+    },
+    {
+      "event": "operation",
+      "pid": 95272,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.002,
+        "merge_children": 0.012,
+        "name_lookup": 0.003,
+        "lookup": 0.026,
+        "http_wait": 136.637,
+        "json_decode": 0.064,
+        "cache_fetch": 137.01,
+        "list_children": 137.058,
+        "names": 0.004,
+        "native_fill": 0.023
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 2,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 2,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 137.115
+    },
+    {
+      "event": "operation",
+      "pid": 95272,
+      "trace": 20,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.002,
+        "merge_children": 0.01,
+        "name_lookup": 0.003,
+        "lookup": 0.028,
+        "list_children": 0.04,
+        "names": 0.002,
+        "native_fill": 0.014
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 3,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 0.085
+    },
+    {
+      "event": "operation",
+      "pid": 3132,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 164.171,
+        "json_decode": 0.033,
+        "disk_space_request": 164.516
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 164.54
+    },
+    {
+      "event": "operation",
+      "pid": 3132,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.004,
+        "http_wait": 332.741,
+        "json_decode": 0.252,
+        "cache_fetch": 333.719,
+        "merge_children": 0.022,
+        "name_lookup": 0.007,
+        "lookup": 333.802,
+        "attributes": 0.029
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_miss": 2,
+        "http_pages": 2,
+        "http_items": 14
+      },
+      "status": "ok",
+      "target": "13cb9ceb1aa3",
+      "total_ms": 333.848
+    },
+    {
+      "event": "operation",
+      "pid": 3132,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.002,
+        "merge_children": 0.015,
+        "name_lookup": 0.003,
+        "lookup": 0.032,
+        "http_wait": 140.913,
+        "json_decode": 0.073,
+        "cache_fetch": 141.348,
+        "list_children": 141.406,
+        "names": 0.004,
+        "native_fill": 0.024
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 2,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 2,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 141.475
+    },
+    {
+      "event": "operation",
+      "pid": 3132,
+      "trace": 20,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.002,
+        "merge_children": 0.01,
+        "name_lookup": 0.003,
+        "lookup": 0.028,
+        "list_children": 0.04,
+        "names": 0.002,
+        "native_fill": 0.014
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 3,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 0.089
+    },
+    {
+      "event": "operation",
+      "pid": 68720,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 209.939,
+        "json_decode": 0.046,
+        "disk_space_request": 210.511
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 210.589
+    },
+    {
+      "event": "operation",
+      "pid": 68720,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.021,
+        "http_wait": 148.974,
+        "json_decode": 0.18,
+        "cache_fetch": 149.628,
+        "merge_children": 0.017,
+        "name_lookup": 0.003,
+        "lookup": 149.712,
+        "attributes": 0.02
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12
+      },
+      "status": "ok",
+      "target": "636b2c93cdd9",
+      "total_ms": 149.75
+    },
+    {
+      "event": "operation",
+      "pid": 68720,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.002,
+        "merge_children": 0.015,
+        "name_lookup": 0.002,
+        "lookup": 0.019,
+        "http_wait": 188.139,
+        "json_decode": 0.289,
+        "cache_fetch": 188.729,
+        "list_children": 188.776,
+        "names": 0.005,
+        "native_fill": 0.036
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 14,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 188.849
+    },
+    {
+      "event": "operation",
+      "pid": 68720,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.001,
+        "merge_children": 0.013,
+        "name_lookup": 0.002,
+        "lookup": 0.019,
+        "list_children": 0.037,
+        "names": 0.003,
+        "native_fill": 0.029
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 2,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 0.099
+    },
+    {
+      "event": "operation",
+      "pid": 68720,
+      "trace": 54,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "local_overlay": 0.002,
+        "http_wait": 202.197,
+        "json_decode": 0.172,
+        "cache_fetch": 202.684,
+        "merge_children": 0.008,
+        "name_lookup": 0.002,
+        "lookup": 202.743,
+        "attributes": 0.014
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12
+      },
+      "status": "ok",
+      "target": "636b2c93cdd9",
+      "total_ms": 202.786
+    },
+    {
+      "event": "operation",
+      "pid": 68720,
+      "trace": 56,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.001,
+        "merge_children": 0.015,
+        "name_lookup": 0.002,
+        "lookup": 0.016,
+        "http_wait": 170.878,
+        "json_decode": 0.324,
+        "cache_fetch": 171.509,
+        "list_children": 171.592,
+        "names": 0.004,
+        "native_fill": 0.04
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 14,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 171.659
+    },
+    {
+      "event": "operation",
+      "pid": 68720,
+      "trace": 75,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.002,
+        "merge_children": 0.013,
+        "name_lookup": 0.002,
+        "lookup": 0.019,
+        "list_children": 0.036,
+        "names": 0.003,
+        "native_fill": 0.026
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 2,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 0.09
+    },
+    {
+      "event": "operation",
+      "pid": 97700,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 152.388,
+        "json_decode": 0.033,
+        "disk_space_request": 152.728
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 152.752
+    },
+    {
+      "event": "operation",
+      "pid": 97700,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.002,
+        "http_wait": 163.69,
+        "json_decode": 0.196,
+        "cache_fetch": 164.307,
+        "merge_children": 0.018,
+        "name_lookup": 0.003,
+        "lookup": 164.367,
+        "attributes": 0.018
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12
+      },
+      "status": "ok",
+      "target": "636b2c93cdd9",
+      "total_ms": 164.401
+    },
+    {
+      "event": "operation",
+      "pid": 97700,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.001,
+        "merge_children": 0.013,
+        "name_lookup": 0.001,
+        "lookup": 0.016,
+        "http_wait": 201.569,
+        "json_decode": 0.326,
+        "cache_fetch": 202.221,
+        "list_children": 202.264,
+        "names": 0.005,
+        "native_fill": 0.038
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 14,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 202.336
+    },
+    {
+      "event": "operation",
+      "pid": 97700,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.002,
+        "merge_children": 0.013,
+        "name_lookup": 0.002,
+        "lookup": 0.021,
+        "list_children": 0.038,
+        "names": 0.003,
+        "native_fill": 0.029
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 2,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 0.1
+    },
+    {
+      "event": "operation",
+      "pid": 52328,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 144.86,
+        "json_decode": 0.035,
+        "disk_space_request": 145.219
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 145.244
+    },
+    {
+      "event": "operation",
+      "pid": 52328,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.002,
+        "http_wait": 165.596,
+        "json_decode": 0.186,
+        "cache_fetch": 166.207,
+        "merge_children": 0.018,
+        "name_lookup": 0.003,
+        "lookup": 166.265,
+        "attributes": 0.02
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12
+      },
+      "status": "ok",
+      "target": "636b2c93cdd9",
+      "total_ms": 166.3
+    },
+    {
+      "event": "operation",
+      "pid": 52328,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "local_overlay": 0.002,
+        "merge_children": 0.018,
+        "name_lookup": 0.002,
+        "lookup": 0.023,
+        "http_wait": 165.622,
+        "json_decode": 0.291,
+        "cache_fetch": 166.247,
+        "list_children": 166.302,
+        "names": 0.005,
+        "native_fill": 0.039
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 14,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 166.386
+    },
+    {
+      "event": "operation",
+      "pid": 52328,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.001,
+        "merge_children": 0.013,
+        "name_lookup": 0.002,
+        "lookup": 0.02,
+        "list_children": 0.036,
+        "names": 0.003,
+        "native_fill": 0.038
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 2,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 0.104
+    },
+    {
+      "event": "operation",
+      "pid": 105740,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 145.402,
+        "json_decode": 0.043,
+        "disk_space_request": 145.873
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 145.901
+    },
+    {
+      "event": "operation",
+      "pid": 105740,
+      "trace": 15,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "lookup": 0.0,
+        "local_overlay": 0.003,
+        "http_wait": 147.343,
+        "json_decode": 0.178,
+        "cache_fetch": 147.938,
+        "merge_children": 0.017,
+        "list_children": 147.985,
+        "names": 0.004,
+        "native_fill": 0.038
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 148.054
+    },
+    {
+      "event": "operation",
+      "pid": 105740,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "lookup": 0.001,
+        "local_overlay": 0.002,
+        "merge_children": 0.01,
+        "list_children": 0.031,
+        "names": 0.005,
+        "native_fill": 0.032
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 0.109
+    },
+    {
+      "event": "operation",
+      "pid": 105740,
+      "trace": 54,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "lookup": 0.001,
+        "local_overlay": 0.002,
+        "http_wait": 203.626,
+        "json_decode": 0.163,
+        "cache_fetch": 204.093,
+        "merge_children": 0.008,
+        "list_children": 204.15,
+        "names": 0.003,
+        "native_fill": 0.034
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 204.213
+    },
+    {
+      "event": "operation",
+      "pid": 105740,
+      "trace": 71,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "lookup": 0.001,
+        "local_overlay": 0.002,
+        "merge_children": 0.01,
+        "list_children": 0.024,
+        "names": 0.003,
+        "native_fill": 0.026
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 0.072
+    },
+    {
+      "event": "operation",
+      "pid": 83116,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 189.799,
+        "json_decode": 0.032,
+        "disk_space_request": 190.138
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 190.16
+    },
+    {
+      "event": "operation",
+      "pid": 83116,
+      "trace": 15,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "lookup": 0.001,
+        "local_overlay": 0.003,
+        "http_wait": 180.134,
+        "json_decode": 0.17,
+        "cache_fetch": 180.747,
+        "merge_children": 0.016,
+        "list_children": 180.802,
+        "names": 0.004,
+        "native_fill": 0.036
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 180.878
+    },
+    {
+      "event": "operation",
+      "pid": 83116,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "lookup": 0.001,
+        "local_overlay": 0.001,
+        "merge_children": 0.008,
+        "list_children": 0.022,
+        "names": 0.003,
+        "native_fill": 0.024
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 0.069
+    },
+    {
+      "event": "operation",
+      "pid": 78504,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 207.382,
+        "json_decode": 0.03,
+        "disk_space_request": 207.727
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 207.751
+    },
+    {
+      "event": "operation",
+      "pid": 78504,
+      "trace": 15,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "lookup": 0.001,
+        "local_overlay": 0.002,
+        "http_wait": 359.595,
+        "json_decode": 0.175,
+        "cache_fetch": 360.185,
+        "merge_children": 0.018,
+        "list_children": 360.233,
+        "names": 0.004,
+        "native_fill": 0.035
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 360.303
+    },
+    {
+      "event": "operation",
+      "pid": 78504,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "lookup": 0.0,
+        "local_overlay": 0.001,
+        "merge_children": 0.008,
+        "list_children": 0.021,
+        "names": 0.003,
+        "native_fill": 0.025
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 0.07
+    }
+  ],
+  "after": [
+    {
+      "event": "operation",
+      "pid": 10576,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 169.498,
+        "json_decode": 0.032,
+        "disk_space_request": 169.845
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 169.868
+    },
+    {
+      "event": "operation",
+      "pid": 10576,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.009,
+        "http_wait": 483.201,
+        "json_decode": 0.259,
+        "cache_fetch": 484.201,
+        "cache_index": 0.035,
+        "name_lookup": 0.003,
+        "lookup": 484.301,
+        "attributes": 0.025
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_miss": 2,
+        "http_pages": 2,
+        "http_items": 14
+      },
+      "status": "ok",
+      "target": "13cb9ceb1aa3",
+      "total_ms": 484.34
+    },
+    {
+      "event": "operation",
+      "pid": 10576,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.004,
+        "name_lookup": 0.002,
+        "lookup": 0.018,
+        "http_wait": 137.263,
+        "json_decode": 0.063,
+        "cache_fetch": 137.625,
+        "cache_index": 0.004,
+        "merge_children": 0.001,
+        "list_children": 137.672,
+        "names": 0.004,
+        "native_fill": 0.022
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 2,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 2,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 137.736
+    },
+    {
+      "event": "operation",
+      "pid": 10576,
+      "trace": 20,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.002,
+        "name_lookup": 0.001,
+        "lookup": 0.01,
+        "merge_children": 0.001,
+        "list_children": 0.023,
+        "names": 0.003,
+        "native_fill": 0.012
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 3,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 0.056
+    },
+    {
+      "event": "operation",
+      "pid": 10576,
+      "trace": 30,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "local_overlay": 0.005,
+        "http_wait": 297.512,
+        "json_decode": 0.265,
+        "cache_fetch": 298.339,
+        "cache_index": 0.015,
+        "name_lookup": 0.001,
+        "lookup": 298.427,
+        "attributes": 0.014
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_miss": 2,
+        "http_pages": 2,
+        "http_items": 14
+      },
+      "status": "ok",
+      "target": "13cb9ceb1aa3",
+      "total_ms": 298.473
+    },
+    {
+      "event": "operation",
+      "pid": 10576,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.002,
+        "name_lookup": 0.001,
+        "lookup": 0.013,
+        "http_wait": 148.54,
+        "json_decode": 0.063,
+        "cache_fetch": 148.885,
+        "cache_index": 0.005,
+        "merge_children": 0.001,
+        "list_children": 148.933,
+        "names": 0.004,
+        "native_fill": 0.021
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 2,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 2,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 148.98
+    },
+    {
+      "event": "operation",
+      "pid": 10576,
+      "trace": 39,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.002,
+        "name_lookup": 0.001,
+        "lookup": 0.01,
+        "merge_children": 0.001,
+        "list_children": 0.02,
+        "names": 0.003,
+        "native_fill": 0.011
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 3,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 0.05
+    },
+    {
+      "event": "operation",
+      "pid": 42052,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 204.003,
+        "json_decode": 0.034,
+        "disk_space_request": 204.354
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 204.379
+    },
+    {
+      "event": "operation",
+      "pid": 42052,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.009,
+        "http_wait": 326.94,
+        "json_decode": 0.257,
+        "cache_fetch": 327.903,
+        "cache_index": 0.03,
+        "name_lookup": 0.002,
+        "lookup": 327.991,
+        "attributes": 0.026
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_miss": 2,
+        "http_pages": 2,
+        "http_items": 14
+      },
+      "status": "ok",
+      "target": "13cb9ceb1aa3",
+      "total_ms": 328.03
+    },
+    {
+      "event": "operation",
+      "pid": 42052,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.004,
+        "name_lookup": 0.002,
+        "lookup": 0.018,
+        "http_wait": 169.521,
+        "json_decode": 0.082,
+        "cache_fetch": 170.036,
+        "cache_index": 0.006,
+        "merge_children": 0.001,
+        "list_children": 170.09,
+        "names": 0.005,
+        "native_fill": 0.024
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 2,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 2,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 170.158
+    },
+    {
+      "event": "operation",
+      "pid": 42052,
+      "trace": 20,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.003,
+        "name_lookup": 0.001,
+        "lookup": 0.011,
+        "merge_children": 0.001,
+        "list_children": 0.023,
+        "names": 0.002,
+        "native_fill": 0.011
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 3,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 0.055
+    },
+    {
+      "event": "operation",
+      "pid": 16080,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 175.791,
+        "json_decode": 0.03,
+        "disk_space_request": 176.136
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 176.159
+    },
+    {
+      "event": "operation",
+      "pid": 16080,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.009,
+        "http_wait": 284.594,
+        "json_decode": 0.242,
+        "cache_fetch": 285.615,
+        "cache_index": 0.038,
+        "name_lookup": 0.002,
+        "lookup": 285.72,
+        "attributes": 0.025
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_miss": 2,
+        "http_pages": 2,
+        "http_items": 14
+      },
+      "status": "ok",
+      "target": "13cb9ceb1aa3",
+      "total_ms": 285.76
+    },
+    {
+      "event": "operation",
+      "pid": 16080,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.003,
+        "name_lookup": 0.001,
+        "lookup": 0.013,
+        "http_wait": 124.281,
+        "json_decode": 0.068,
+        "cache_fetch": 124.67,
+        "cache_index": 0.005,
+        "merge_children": 0.001,
+        "list_children": 124.711,
+        "names": 0.003,
+        "native_fill": 0.024
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 2,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 2,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 124.765
+    },
+    {
+      "event": "operation",
+      "pid": 16080,
+      "trace": 20,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.003,
+        "name_lookup": 0.001,
+        "lookup": 0.015,
+        "merge_children": 0.001,
+        "list_children": 0.03,
+        "names": 0.003,
+        "native_fill": 0.014
+      },
+      "counts": {
+        "path_components": 2,
+        "cache_hit": 3,
+        "entries": 2,
+        "filled_entries": 4
+      },
+      "status": "ok",
+      "total_ms": 0.074
+    },
+    {
+      "event": "operation",
+      "pid": 48540,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 165.206,
+        "json_decode": 0.031,
+        "disk_space_request": 165.785
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 165.81
+    },
+    {
+      "event": "operation",
+      "pid": 48540,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.008,
+        "http_wait": 168.217,
+        "json_decode": 0.202,
+        "cache_fetch": 168.862,
+        "cache_index": 0.017,
+        "name_lookup": 0.001,
+        "lookup": 168.922,
+        "attributes": 0.021
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12
+      },
+      "status": "ok",
+      "target": "636b2c93cdd9",
+      "total_ms": 168.955
+    },
+    {
+      "event": "operation",
+      "pid": 48540,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.003,
+        "name_lookup": 0.0,
+        "lookup": 0.009,
+        "http_wait": 158.329,
+        "json_decode": 0.259,
+        "cache_fetch": 158.903,
+        "cache_index": 0.015,
+        "merge_children": 0.001,
+        "list_children": 158.95,
+        "names": 0.005,
+        "native_fill": 0.036
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 14,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 159.018
+    },
+    {
+      "event": "operation",
+      "pid": 48540,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.003,
+        "name_lookup": 0.001,
+        "lookup": 0.011,
+        "merge_children": 0.001,
+        "list_children": 0.026,
+        "names": 0.005,
+        "native_fill": 0.029
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 2,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 0.09
+    },
+    {
+      "event": "operation",
+      "pid": 48540,
+      "trace": 54,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "local_overlay": 0.003,
+        "http_wait": 155.336,
+        "json_decode": 0.196,
+        "cache_fetch": 155.837,
+        "cache_index": 0.011,
+        "name_lookup": 0.001,
+        "lookup": 155.902,
+        "attributes": 0.015
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12
+      },
+      "status": "ok",
+      "target": "636b2c93cdd9",
+      "total_ms": 155.945
+    },
+    {
+      "event": "operation",
+      "pid": 48540,
+      "trace": 56,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.003,
+        "name_lookup": 0.001,
+        "lookup": 0.012,
+        "http_wait": 190.067,
+        "json_decode": 0.288,
+        "cache_fetch": 190.679,
+        "cache_index": 0.011,
+        "merge_children": 0.001,
+        "list_children": 190.76,
+        "names": 0.005,
+        "native_fill": 0.036
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 14,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 190.834
+    },
+    {
+      "event": "operation",
+      "pid": 48540,
+      "trace": 75,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "local_overlay": 0.003,
+        "name_lookup": 0.001,
+        "lookup": 0.015,
+        "merge_children": 0.001,
+        "list_children": 0.032,
+        "names": 0.006,
+        "native_fill": 0.034
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 2,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 0.105
+    },
+    {
+      "event": "operation",
+      "pid": 22552,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 188.664,
+        "json_decode": 0.034,
+        "disk_space_request": 189.027
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 189.051
+    },
+    {
+      "event": "operation",
+      "pid": 22552,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.012,
+        "http_wait": 138.364,
+        "json_decode": 0.198,
+        "cache_fetch": 138.974,
+        "cache_index": 0.017,
+        "name_lookup": 0.001,
+        "lookup": 139.035,
+        "attributes": 0.021
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12
+      },
+      "status": "ok",
+      "target": "636b2c93cdd9",
+      "total_ms": 139.069
+    },
+    {
+      "event": "operation",
+      "pid": 22552,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.004,
+        "name_lookup": 0.001,
+        "lookup": 0.014,
+        "http_wait": 213.297,
+        "json_decode": 0.265,
+        "cache_fetch": 213.896,
+        "cache_index": 0.015,
+        "merge_children": 0.001,
+        "list_children": 213.951,
+        "names": 0.004,
+        "native_fill": 0.038
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 14,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 214.031
+    },
+    {
+      "event": "operation",
+      "pid": 22552,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.003,
+        "name_lookup": 0.001,
+        "lookup": 0.008,
+        "merge_children": 0.001,
+        "list_children": 0.022,
+        "names": 0.005,
+        "native_fill": 0.041
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 2,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 0.091
+    },
+    {
+      "event": "operation",
+      "pid": 67092,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 214.452,
+        "json_decode": 0.03,
+        "disk_space_request": 214.797
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 214.82
+    },
+    {
+      "event": "operation",
+      "pid": 67092,
+      "trace": 11,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "local_overlay": 0.008,
+        "http_wait": 614.031,
+        "json_decode": 0.187,
+        "cache_fetch": 614.653,
+        "cache_index": 0.02,
+        "name_lookup": 0.001,
+        "lookup": 614.715,
+        "attributes": 0.023
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12
+      },
+      "status": "ok",
+      "target": "636b2c93cdd9",
+      "total_ms": 614.751
+    },
+    {
+      "event": "operation",
+      "pid": 67092,
+      "trace": 13,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.003,
+        "name_lookup": 0.001,
+        "lookup": 0.014,
+        "http_wait": 186.825,
+        "json_decode": 0.278,
+        "cache_fetch": 187.443,
+        "cache_index": 0.016,
+        "merge_children": 0.002,
+        "list_children": 187.5,
+        "names": 0.004,
+        "native_fill": 0.038
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 1,
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 14,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 187.581
+    },
+    {
+      "event": "operation",
+      "pid": 67092,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "local_overlay": 0.003,
+        "name_lookup": 0.001,
+        "lookup": 0.012,
+        "merge_children": 0.001,
+        "list_children": 0.027,
+        "names": 0.005,
+        "native_fill": 0.031
+      },
+      "counts": {
+        "path_components": 1,
+        "cache_hit": 2,
+        "entries": 14,
+        "filled_entries": 16
+      },
+      "status": "ok",
+      "total_ms": 0.095
+    },
+    {
+      "event": "operation",
+      "pid": 67220,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 176.381,
+        "json_decode": 0.045,
+        "disk_space_request": 176.744
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 176.77
+    },
+    {
+      "event": "operation",
+      "pid": 67220,
+      "trace": 15,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "lookup": 0.001,
+        "local_overlay": 0.002,
+        "http_wait": 159.178,
+        "json_decode": 0.181,
+        "cache_fetch": 159.817,
+        "cache_index": 0.026,
+        "merge_children": 0.001,
+        "list_children": 159.876,
+        "names": 0.005,
+        "native_fill": 0.037
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 159.943
+    },
+    {
+      "event": "operation",
+      "pid": 67220,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.003,
+        "lookup": 0.001,
+        "local_overlay": 0.003,
+        "merge_children": 0.002,
+        "list_children": 0.023,
+        "names": 0.008,
+        "native_fill": 0.04
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 0.101
+    },
+    {
+      "event": "operation",
+      "pid": 67220,
+      "trace": 54,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "lookup": 0.001,
+        "local_overlay": 0.001,
+        "http_wait": 172.413,
+        "json_decode": 0.165,
+        "cache_fetch": 172.876,
+        "cache_index": 0.013,
+        "merge_children": 0.001,
+        "list_children": 172.936,
+        "names": 0.004,
+        "native_fill": 0.035
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 172.995
+    },
+    {
+      "event": "operation",
+      "pid": 67220,
+      "trace": 71,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "lookup": 0.001,
+        "local_overlay": 0.001,
+        "merge_children": 0.001,
+        "list_children": 0.014,
+        "names": 0.005,
+        "native_fill": 0.025
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 0.061
+    },
+    {
+      "event": "operation",
+      "pid": 67360,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 171.319,
+        "json_decode": 0.046,
+        "disk_space_request": 171.683
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 171.708
+    },
+    {
+      "event": "operation",
+      "pid": 67360,
+      "trace": 15,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "lookup": 0.0,
+        "local_overlay": 0.002,
+        "http_wait": 160.85,
+        "json_decode": 0.192,
+        "cache_fetch": 161.503,
+        "cache_index": 0.023,
+        "merge_children": 0.001,
+        "list_children": 161.56,
+        "names": 0.004,
+        "native_fill": 0.037
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 161.627
+    },
+    {
+      "event": "operation",
+      "pid": 67360,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "lookup": 0.0,
+        "local_overlay": 0.002,
+        "merge_children": 0.001,
+        "list_children": 0.016,
+        "names": 0.005,
+        "native_fill": 0.026
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 0.068
+    },
+    {
+      "event": "operation",
+      "pid": 68856,
+      "trace": 1,
+      "operation": "statfs",
+      "stages_ms": {
+        "http_wait": 156.529,
+        "json_decode": 0.037,
+        "disk_space_request": 157.12
+      },
+      "counts": {},
+      "status": "ok",
+      "total_ms": 157.149
+    },
+    {
+      "event": "operation",
+      "pid": 68856,
+      "trace": 15,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "lookup": 0.001,
+        "local_overlay": 0.003,
+        "http_wait": 235.235,
+        "json_decode": 0.18,
+        "cache_fetch": 235.845,
+        "cache_index": 0.025,
+        "merge_children": 0.001,
+        "list_children": 235.904,
+        "names": 0.004,
+        "native_fill": 0.037
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 235.978
+    },
+    {
+      "event": "operation",
+      "pid": 68856,
+      "trace": 32,
+      "operation": "native_readdir",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "lookup": 0.0,
+        "local_overlay": 0.002,
+        "merge_children": 0.001,
+        "list_children": 0.015,
+        "names": 0.004,
+        "native_fill": 0.025
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12,
+        "filled_entries": 14
+      },
+      "status": "ok",
+      "total_ms": 0.065
+    }
+  ]
+}

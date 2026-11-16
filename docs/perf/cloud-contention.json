@@ -1,0 +1,253 @@
+{
+  "read_only": true,
+  "samples": [
+    {
+      "directory_open_ms": 230.376,
+      "requested_header_bytes": 32,
+      "file_size": 2725780
+    },
+    {
+      "directory_open_ms": 219.199,
+      "requested_header_bytes": 32,
+      "file_size": 2725780
+    },
+    {
+      "directory_open_ms": 193.365,
+      "requested_header_bytes": 32,
+      "file_size": 2725780
+    }
+  ],
+  "operations": [
+    {
+      "event": "list_page",
+      "pid": 108828,
+      "trace": 1,
+      "page_size": 1000,
+      "items": 12,
+      "has_more": false,
+      "elapsed_ms": 176.034
+    },
+    {
+      "event": "operation",
+      "pid": 108828,
+      "trace": 1,
+      "operation": "list",
+      "stages_ms": {
+        "lock_wait": 0.004,
+        "lookup": 0.001,
+        "local_overlay": 0.002,
+        "http_wait": 175.538,
+        "json_decode": 0.203,
+        "cache_fetch": 176.408,
+        "cache_index": 0.026,
+        "merge_children": 0.001,
+        "list_children": 176.474
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12
+      },
+      "status": "ok",
+      "target": "8a5edab28263",
+      "total_ms": 176.503
+    },
+    {
+      "event": "operation",
+      "pid": 108828,
+      "trace": 3,
+      "operation": "read",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "http_wait": 105.798,
+        "json_decode": 0.036,
+        "download_url": 105.99,
+        "range_read": 124.188,
+        "read_blocks": 230.223
+      },
+      "counts": {
+        "requested_bytes": 32,
+        "block_cache_miss": 1,
+        "downloaded_bytes": 2725780,
+        "returned_bytes": 32
+      },
+      "status": "ok",
+      "total_ms": 230.254
+    },
+    {
+      "event": "operation",
+      "pid": 108828,
+      "trace": 4,
+      "operation": "list",
+      "stages_ms": {
+        "lock_wait": 230.068,
+        "lookup": 0.001,
+        "local_overlay": 0.005,
+        "merge_children": 0.001,
+        "list_children": 0.037
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12
+      },
+      "status": "ok",
+      "target": "8a5edab28263",
+      "total_ms": 230.133
+    },
+    {
+      "event": "list_page",
+      "pid": 108828,
+      "trace": 5,
+      "page_size": 1000,
+      "items": 12,
+      "has_more": false,
+      "elapsed_ms": 174.826
+    },
+    {
+      "event": "operation",
+      "pid": 108828,
+      "trace": 5,
+      "operation": "list",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "lookup": 0.001,
+        "local_overlay": 0.002,
+        "http_wait": 174.503,
+        "json_decode": 0.174,
+        "cache_fetch": 175.002,
+        "cache_index": 0.013,
+        "merge_children": 0.001,
+        "list_children": 175.044
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12
+      },
+      "status": "ok",
+      "target": "8a5edab28263",
+      "total_ms": 175.067
+    },
+    {
+      "event": "operation",
+      "pid": 108828,
+      "trace": 7,
+      "operation": "read",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "http_wait": 92.311,
+        "json_decode": 0.033,
+        "download_url": 92.465,
+        "range_read": 126.46,
+        "read_blocks": 218.969
+      },
+      "counts": {
+        "requested_bytes": 32,
+        "block_cache_miss": 1,
+        "downloaded_bytes": 2725780,
+        "returned_bytes": 32
+      },
+      "status": "ok",
+      "total_ms": 218.999
+    },
+    {
+      "event": "operation",
+      "pid": 108828,
+      "trace": 8,
+      "operation": "list",
+      "stages_ms": {
+        "lock_wait": 218.88,
+        "lookup": 0.001,
+        "local_overlay": 0.004,
+        "merge_children": 0.001,
+        "list_children": 0.023
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12
+      },
+      "status": "ok",
+      "target": "8a5edab28263",
+      "total_ms": 218.927
+    },
+    {
+      "event": "list_page",
+      "pid": 108828,
+      "trace": 9,
+      "page_size": 1000,
+      "items": 12,
+      "has_more": false,
+      "elapsed_ms": 162.99
+    },
+    {
+      "event": "operation",
+      "pid": 108828,
+      "trace": 9,
+      "operation": "list",
+      "stages_ms": {
+        "lock_wait": 0.002,
+        "lookup": 0.001,
+        "local_overlay": 0.002,
+        "http_wait": 162.573,
+        "json_decode": 0.289,
+        "cache_fetch": 163.212,
+        "cache_index": 0.018,
+        "merge_children": 0.001,
+        "list_children": 163.264
+      },
+      "counts": {
+        "cache_miss": 1,
+        "http_pages": 1,
+        "http_items": 12,
+        "entries": 12
+      },
+      "status": "ok",
+      "target": "8a5edab28263",
+      "total_ms": 163.288
+    },
+    {
+      "event": "operation",
+      "pid": 108828,
+      "trace": 11,
+      "operation": "read",
+      "stages_ms": {
+        "lock_wait": 0.001,
+        "http_wait": 93.429,
+        "json_decode": 0.037,
+        "download_url": 93.591,
+        "range_read": 99.543,
+        "read_blocks": 193.17
+      },
+      "counts": {
+        "requested_bytes": 32,
+        "block_cache_miss": 1,
+        "downloaded_bytes": 2725780,
+        "returned_bytes": 32
+      },
+      "status": "ok",
+      "total_ms": 193.192
+    },
+    {
+      "event": "operation",
+      "pid": 108828,
+      "trace": 12,
+      "operation": "list",
+      "stages_ms": {
+        "lock_wait": 193.1,
+        "lookup": 0.001,
+        "local_overlay": 0.002,
+        "merge_children": 0.001,
+        "list_children": 0.022
+      },
+      "counts": {
+        "cache_hit": 1,
+        "entries": 12
+      },
+      "status": "ok",
+      "target": "8a5edab28263",
+      "total_ms": 193.144
+    }
+  ]
+}

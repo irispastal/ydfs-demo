@@ -1,7 +1,7 @@
 import errno
 import stat
 
-from fuse import FuseOSError, Operations
+from adapter.binding import FuseOSError, Operations
 
 
 class FixedFile(Operations):

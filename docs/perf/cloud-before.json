@@ -1,0 +1,1306 @@
+{
+  "measured_at": "2026-11-16T08:55:24.268760+00:00",
+  "platform": "win32",
+  "python": "3.14.3",
+  "meta_ttl": 5,
+  "repeats": 5,
+  "mount_repeats": 3,
+  "read_only": true,
+  "scenarios": [
+    {
+      "target": "8a5edab28263",
+      "depth": 0,
+      "page_size": 100,
+      "core": [
+        {
+          "cold_list_ms": 184.911,
+          "child_attributes_ms": 0.562,
+          "cold_open_ms": 185.473,
+          "warm_open_ms": 0.407,
+          "http_pages": 1,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 1,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.004,
+                "lookup": 0.001,
+                "local_overlay": 0.002,
+                "http_wait": 183.76,
+                "json_decode": 0.173,
+                "cache_fetch": 184.592,
+                "merge_children": 0.018,
+                "list_children": 184.645,
+                "names": 0.004
+              },
+              "counts": {
+                "cache_miss": 1,
+                "http_pages": 1,
+                "http_items": 12,
+                "entries": 12
+              },
+              "status": "ok",
+              "total_ms": 184.684
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 2,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.004,
+                "local_overlay": 0.007,
+                "merge_children": 0.038,
+                "name_lookup": 0.014,
+                "lookup": 0.136,
+                "attributes": 0.075
+              },
+              "counts": {
+                "path_components": 12,
+                "cache_hit": 12
+              },
+              "status": "ok",
+              "total_ms": 0.307
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 3,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.006,
+                "lookup": 0.111,
+                "local_overlay": 0.006,
+                "merge_children": 0.041,
+                "list_children": 0.02,
+                "names": 0.003,
+                "name_lookup": 0.013,
+                "attributes": 0.058
+              },
+              "counts": {
+                "cache_hit": 13,
+                "entries": 12,
+                "path_components": 12
+              },
+              "status": "ok",
+              "total_ms": 0.289
+            }
+          }
+        },
+        {
+          "cold_list_ms": 141.478,
+          "child_attributes_ms": 0.346,
+          "cold_open_ms": 141.824,
+          "warm_open_ms": 0.357,
+          "http_pages": 1,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 4,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "lookup": 0.0,
+                "local_overlay": 0.001,
+                "http_wait": 140.845,
+                "json_decode": 0.176,
+                "cache_fetch": 141.334,
+                "merge_children": 0.008,
+                "list_children": 141.363,
+                "names": 0.004
+              },
+              "counts": {
+                "cache_miss": 1,
+                "http_pages": 1,
+                "http_items": 12,
+                "entries": 12
+              },
+              "status": "ok",
+              "total_ms": 141.381
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 5,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.005,
+                "local_overlay": 0.006,
+                "merge_children": 0.036,
+                "name_lookup": 0.014,
+                "lookup": 0.116,
+                "attributes": 0.058
+              },
+              "counts": {
+                "path_components": 12,
+                "cache_hit": 12
+              },
+              "status": "ok",
+              "total_ms": 0.259
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 6,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.005,
+                "lookup": 0.109,
+                "local_overlay": 0.006,
+                "merge_children": 0.038,
+                "list_children": 0.013,
+                "names": 0.002,
+                "name_lookup": 0.012,
+                "attributes": 0.058
+              },
+              "counts": {
+                "cache_hit": 13,
+                "entries": 12,
+                "path_components": 12
+              },
+              "status": "ok",
+              "total_ms": 0.263
+            }
+          }
+        },
+        {
+          "cold_list_ms": 183.817,
+          "child_attributes_ms": 0.357,
+          "cold_open_ms": 184.174,
+          "warm_open_ms": 0.355,
+          "http_pages": 1,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 7,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "lookup": 0.001,
+                "local_overlay": 0.001,
+                "http_wait": 183.199,
+                "json_decode": 0.189,
+                "cache_fetch": 183.669,
+                "merge_children": 0.008,
+                "list_children": 183.696,
+                "names": 0.004
+              },
+              "counts": {
+                "cache_miss": 1,
+                "http_pages": 1,
+                "http_items": 12,
+                "entries": 12
+              },
+              "status": "ok",
+              "total_ms": 183.716
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 8,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.004,
+                "local_overlay": 0.006,
+                "merge_children": 0.036,
+                "name_lookup": 0.013,
+                "lookup": 0.118,
+                "attributes": 0.058
+              },
+              "counts": {
+                "path_components": 12,
+                "cache_hit": 12
+              },
+              "status": "ok",
+              "total_ms": 0.262
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 9,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.005,
+                "lookup": 0.121,
+                "local_overlay": 0.006,
+                "merge_children": 0.036,
+                "list_children": 0.013,
+                "names": 0.002,
+                "name_lookup": 0.012,
+                "attributes": 0.047
+              },
+              "counts": {
+                "cache_hit": 13,
+                "entries": 12,
+                "path_components": 12
+              },
+              "status": "ok",
+              "total_ms": 0.264
+            }
+          }
+        },
+        {
+          "cold_list_ms": 188.252,
+          "child_attributes_ms": 0.357,
+          "cold_open_ms": 188.609,
+          "warm_open_ms": 0.361,
+          "http_pages": 1,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 10,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "lookup": 0.0,
+                "local_overlay": 0.001,
+                "http_wait": 187.628,
+                "json_decode": 0.174,
+                "cache_fetch": 188.062,
+                "merge_children": 0.007,
+                "list_children": 188.087,
+                "names": 0.004
+              },
+              "counts": {
+                "cache_miss": 1,
+                "http_pages": 1,
+                "http_items": 12,
+                "entries": 12
+              },
+              "status": "ok",
+              "total_ms": 188.105
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 11,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.004,
+                "local_overlay": 0.006,
+                "merge_children": 0.036,
+                "name_lookup": 0.014,
+                "lookup": 0.118,
+                "attributes": 0.058
+              },
+              "counts": {
+                "path_components": 12,
+                "cache_hit": 12
+              },
+              "status": "ok",
+              "total_ms": 0.262
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 12,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.005,
+                "lookup": 0.107,
+                "local_overlay": 0.006,
+                "merge_children": 0.036,
+                "list_children": 0.013,
+                "names": 0.002,
+                "name_lookup": 0.013,
+                "attributes": 0.044
+              },
+              "counts": {
+                "cache_hit": 13,
+                "entries": 12,
+                "path_components": 12
+              },
+              "status": "ok",
+              "total_ms": 0.248
+            }
+          }
+        },
+        {
+          "cold_list_ms": 174.977,
+          "child_attributes_ms": 0.334,
+          "cold_open_ms": 175.311,
+          "warm_open_ms": 0.328,
+          "http_pages": 1,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 13,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "lookup": 0.001,
+                "local_overlay": 0.001,
+                "http_wait": 174.399,
+                "json_decode": 0.178,
+                "cache_fetch": 174.838,
+                "merge_children": 0.008,
+                "list_children": 174.863,
+                "names": 0.004
+              },
+              "counts": {
+                "cache_miss": 1,
+                "http_pages": 1,
+                "http_items": 12,
+                "entries": 12
+              },
+              "status": "ok",
+              "total_ms": 174.882
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 14,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.004,
+                "local_overlay": 0.005,
+                "merge_children": 0.035,
+                "name_lookup": 0.013,
+                "lookup": 0.115,
+                "attributes": 0.054
+              },
+              "counts": {
+                "path_components": 12,
+                "cache_hit": 12
+              },
+              "status": "ok",
+              "total_ms": 0.251
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 15,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.005,
+                "lookup": 0.107,
+                "local_overlay": 0.006,
+                "merge_children": 0.036,
+                "list_children": 0.013,
+                "names": 0.002,
+                "name_lookup": 0.012,
+                "attributes": 0.042
+              },
+              "counts": {
+                "cache_hit": 13,
+                "entries": 12,
+                "path_components": 12
+              },
+              "status": "ok",
+              "total_ms": 0.245
+            }
+          }
+        }
+      ],
+      "entries": 12,
+      "manifest": "b3548e61656bf66af4db0c746c13a19fae3921ef877d6ab1a0c94f719ead2ba1",
+      "core_median": {
+        "cold_list_ms": 183.817,
+        "child_attributes_ms": 0.357,
+        "cold_open_ms": 184.174,
+        "warm_open_ms": 0.357,
+        "http_pages": 1
+      },
+      "expired_open_ms": 206.107,
+      "after_expired_warm_ms": 1.902,
+      "mounted": [
+        {
+          "cold_open_ms": 150.062,
+          "warm_open_ms": 2.143,
+          "volume_space_ms": 0.842
+        },
+        {
+          "cold_open_ms": 182.603,
+          "warm_open_ms": 1.863,
+          "volume_space_ms": 0.749
+        },
+        {
+          "cold_open_ms": 361.952,
+          "warm_open_ms": 1.729,
+          "volume_space_ms": 0.638
+        }
+      ],
+      "mounted_median": {
+        "cold_open_ms": 182.603,
+        "warm_open_ms": 1.863,
+        "volume_space_ms": 0.749
+      }
+    },
+    {
+      "target": "636b2c93cdd9",
+      "depth": 1,
+      "page_size": 100,
+      "core": [
+        {
+          "cold_list_ms": 361.793,
+          "child_attributes_ms": 0.558,
+          "cold_open_ms": 362.351,
+          "warm_open_ms": 0.527,
+          "http_pages": 2,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 16,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.003,
+                "local_overlay": 0.003,
+                "http_wait": 360.534,
+                "json_decode": 0.471,
+                "cache_fetch": 361.591,
+                "merge_children": 0.016,
+                "name_lookup": 0.003,
+                "lookup": 188.849,
+                "list_children": 361.655,
+                "names": 0.005
+              },
+              "counts": {
+                "path_components": 1,
+                "cache_miss": 2,
+                "http_pages": 2,
+                "http_items": 26,
+                "entries": 14
+              },
+              "status": "ok",
+              "total_ms": 361.688
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 17,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.006,
+                "local_overlay": 0.012,
+                "merge_children": 0.093,
+                "name_lookup": 0.027,
+                "lookup": 0.269,
+                "attributes": 0.074
+              },
+              "counts": {
+                "path_components": 28,
+                "cache_hit": 28
+              },
+              "status": "ok",
+              "total_ms": 0.449
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 18,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.006,
+                "local_overlay": 0.012,
+                "merge_children": 0.091,
+                "name_lookup": 0.025,
+                "lookup": 0.265,
+                "list_children": 0.024,
+                "names": 0.002,
+                "attributes": 0.053
+              },
+              "counts": {
+                "path_components": 29,
+                "cache_hit": 30,
+                "entries": 14
+              },
+              "status": "ok",
+              "total_ms": 0.431
+            }
+          }
+        },
+        {
+          "cold_list_ms": 358.517,
+          "child_attributes_ms": 0.51,
+          "cold_open_ms": 359.027,
+          "warm_open_ms": 0.509,
+          "http_pages": 2,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 19,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.002,
+                "http_wait": 357.246,
+                "json_decode": 0.442,
+                "cache_fetch": 358.306,
+                "merge_children": 0.018,
+                "name_lookup": 0.002,
+                "lookup": 185.528,
+                "list_children": 358.367,
+                "names": 0.005
+              },
+              "counts": {
+                "path_components": 1,
+                "cache_miss": 2,
+                "http_pages": 2,
+                "http_items": 26,
+                "entries": 14
+              },
+              "status": "ok",
+              "total_ms": 358.39
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 20,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.005,
+                "local_overlay": 0.012,
+                "merge_children": 0.09,
+                "name_lookup": 0.026,
+                "lookup": 0.26,
+                "attributes": 0.066
+              },
+              "counts": {
+                "path_components": 28,
+                "cache_hit": 28
+              },
+              "status": "ok",
+              "total_ms": 0.423
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 21,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.006,
+                "local_overlay": 0.012,
+                "merge_children": 0.09,
+                "name_lookup": 0.034,
+                "lookup": 0.263,
+                "list_children": 0.024,
+                "names": 0.002,
+                "attributes": 0.051
+              },
+              "counts": {
+                "path_components": 29,
+                "cache_hit": 30,
+                "entries": 14
+              },
+              "status": "ok",
+              "total_ms": 0.422
+            }
+          }
+        },
+        {
+          "cold_list_ms": 410.819,
+          "child_attributes_ms": 0.541,
+          "cold_open_ms": 411.36,
+          "warm_open_ms": 0.532,
+          "http_pages": 2,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 22,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.002,
+                "http_wait": 409.614,
+                "json_decode": 0.449,
+                "cache_fetch": 410.612,
+                "merge_children": 0.018,
+                "name_lookup": 0.002,
+                "lookup": 166.98,
+                "list_children": 410.671,
+                "names": 0.005
+              },
+              "counts": {
+                "path_components": 1,
+                "cache_miss": 2,
+                "http_pages": 2,
+                "http_items": 26,
+                "entries": 14
+              },
+              "status": "ok",
+              "total_ms": 410.694
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 23,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.005,
+                "local_overlay": 0.014,
+                "merge_children": 0.093,
+                "name_lookup": 0.028,
+                "lookup": 0.273,
+                "attributes": 0.065
+              },
+              "counts": {
+                "path_components": 28,
+                "cache_hit": 28
+              },
+              "status": "ok",
+              "total_ms": 0.44
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 24,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.006,
+                "local_overlay": 0.012,
+                "merge_children": 0.094,
+                "name_lookup": 0.026,
+                "lookup": 0.262,
+                "list_children": 0.024,
+                "names": 0.002,
+                "attributes": 0.055
+              },
+              "counts": {
+                "path_components": 29,
+                "cache_hit": 30,
+                "entries": 14
+              },
+              "status": "ok",
+              "total_ms": 0.437
+            }
+          }
+        },
+        {
+          "cold_list_ms": 336.635,
+          "child_attributes_ms": 0.518,
+          "cold_open_ms": 337.153,
+          "warm_open_ms": 0.557,
+          "http_pages": 2,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 25,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.002,
+                "http_wait": 335.448,
+                "json_decode": 0.45,
+                "cache_fetch": 336.451,
+                "merge_children": 0.017,
+                "name_lookup": 0.002,
+                "lookup": 144.714,
+                "list_children": 336.509,
+                "names": 0.004
+              },
+              "counts": {
+                "path_components": 1,
+                "cache_miss": 2,
+                "http_pages": 2,
+                "http_items": 26,
+                "entries": 14
+              },
+              "status": "ok",
+              "total_ms": 336.53
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 26,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.005,
+                "local_overlay": 0.011,
+                "merge_children": 0.092,
+                "name_lookup": 0.027,
+                "lookup": 0.265,
+                "attributes": 0.066
+              },
+              "counts": {
+                "path_components": 28,
+                "cache_hit": 28
+              },
+              "status": "ok",
+              "total_ms": 0.432
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 27,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.006,
+                "local_overlay": 0.012,
+                "merge_children": 0.092,
+                "name_lookup": 0.026,
+                "lookup": 0.28,
+                "list_children": 0.024,
+                "names": 0.002,
+                "attributes": 0.055
+              },
+              "counts": {
+                "path_components": 29,
+                "cache_hit": 30,
+                "entries": 14
+              },
+              "status": "ok",
+              "total_ms": 0.446
+            }
+          }
+        },
+        {
+          "cold_list_ms": 667.357,
+          "child_attributes_ms": 0.607,
+          "cold_open_ms": 667.964,
+          "warm_open_ms": 0.51,
+          "http_pages": 2,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 28,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.002,
+                "http_wait": 665.914,
+                "json_decode": 0.535,
+                "cache_fetch": 667.063,
+                "merge_children": 0.019,
+                "name_lookup": 0.002,
+                "lookup": 417.983,
+                "list_children": 667.146,
+                "names": 0.006
+              },
+              "counts": {
+                "path_components": 1,
+                "cache_miss": 2,
+                "http_pages": 2,
+                "http_items": 26,
+                "entries": 14
+              },
+              "status": "ok",
+              "total_ms": 667.169
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 29,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.006,
+                "local_overlay": 0.012,
+                "merge_children": 0.103,
+                "name_lookup": 0.03,
+                "lookup": 0.299,
+                "attributes": 0.074
+              },
+              "counts": {
+                "path_components": 28,
+                "cache_hit": 28
+              },
+              "status": "ok",
+              "total_ms": 0.489
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 30,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.006,
+                "local_overlay": 0.011,
+                "merge_children": 0.092,
+                "name_lookup": 0.025,
+                "lookup": 0.255,
+                "list_children": 0.028,
+                "names": 0.003,
+                "attributes": 0.052
+              },
+              "counts": {
+                "path_components": 29,
+                "cache_hit": 30,
+                "entries": 14
+              },
+              "status": "ok",
+              "total_ms": 0.42
+            }
+          }
+        }
+      ],
+      "entries": 14,
+      "manifest": "a49bf91a1c87a8288054ba307a70f0127fa0e9fea9fb1fa584c589b0bdf3045a",
+      "core_median": {
+        "cold_list_ms": 361.793,
+        "child_attributes_ms": 0.541,
+        "cold_open_ms": 362.351,
+        "warm_open_ms": 0.527,
+        "http_pages": 2
+      },
+      "expired_open_ms": 376.428,
+      "after_expired_warm_ms": 1.674,
+      "mounted": [
+        {
+          "cold_open_ms": 340.776,
+          "warm_open_ms": 2.184,
+          "volume_space_ms": 0.775
+        },
+        {
+          "cold_open_ms": 368.614,
+          "warm_open_ms": 1.758,
+          "volume_space_ms": 0.709
+        },
+        {
+          "cold_open_ms": 334.618,
+          "warm_open_ms": 1.863,
+          "volume_space_ms": 0.696
+        }
+      ],
+      "mounted_median": {
+        "cold_open_ms": 340.776,
+        "warm_open_ms": 1.863,
+        "volume_space_ms": 0.709
+      }
+    },
+    {
+      "target": "13cb9ceb1aa3",
+      "depth": 2,
+      "page_size": 100,
+      "core": [
+        {
+          "cold_list_ms": 507.207,
+          "child_attributes_ms": 0.206,
+          "cold_open_ms": 507.413,
+          "warm_open_ms": 0.213,
+          "http_pages": 3,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 31,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.003,
+                "local_overlay": 0.003,
+                "http_wait": 505.846,
+                "json_decode": 0.313,
+                "cache_fetch": 506.977,
+                "merge_children": 0.017,
+                "name_lookup": 0.005,
+                "lookup": 333.205,
+                "list_children": 507.061,
+                "names": 0.003
+              },
+              "counts": {
+                "path_components": 2,
+                "cache_miss": 3,
+                "http_pages": 3,
+                "http_items": 16,
+                "entries": 2
+              },
+              "status": "ok",
+              "total_ms": 507.093
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 32,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.004,
+                "merge_children": 0.019,
+                "name_lookup": 0.007,
+                "lookup": 0.066,
+                "attributes": 0.021
+              },
+              "counts": {
+                "path_components": 6,
+                "cache_hit": 6
+              },
+              "status": "ok",
+              "total_ms": 0.116
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 33,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.002,
+                "local_overlay": 0.004,
+                "merge_children": 0.018,
+                "name_lookup": 0.007,
+                "lookup": 0.072,
+                "list_children": 0.032,
+                "names": 0.002,
+                "attributes": 0.012
+              },
+              "counts": {
+                "path_components": 8,
+                "cache_hit": 9,
+                "entries": 2
+              },
+              "status": "ok",
+              "total_ms": 0.124
+            }
+          }
+        },
+        {
+          "cold_list_ms": 454.106,
+          "child_attributes_ms": 0.227,
+          "cold_open_ms": 454.333,
+          "warm_open_ms": 0.19,
+          "http_pages": 3,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 34,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.004,
+                "http_wait": 452.696,
+                "json_decode": 0.326,
+                "cache_fetch": 453.848,
+                "merge_children": 0.016,
+                "name_lookup": 0.005,
+                "lookup": 308.616,
+                "list_children": 453.936,
+                "names": 0.003
+              },
+              "counts": {
+                "path_components": 2,
+                "cache_miss": 3,
+                "http_pages": 3,
+                "http_items": 16,
+                "entries": 2
+              },
+              "status": "ok",
+              "total_ms": 453.955
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 35,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.004,
+                "merge_children": 0.017,
+                "name_lookup": 0.006,
+                "lookup": 0.076,
+                "attributes": 0.021
+              },
+              "counts": {
+                "path_components": 6,
+                "cache_hit": 6
+              },
+              "status": "ok",
+              "total_ms": 0.123
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 36,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.002,
+                "local_overlay": 0.004,
+                "merge_children": 0.015,
+                "name_lookup": 0.007,
+                "lookup": 0.062,
+                "list_children": 0.028,
+                "names": 0.002,
+                "attributes": 0.01
+              },
+              "counts": {
+                "path_components": 8,
+                "cache_hit": 9,
+                "entries": 2
+              },
+              "status": "ok",
+              "total_ms": 0.108
+            }
+          }
+        },
+        {
+          "cold_list_ms": 511.89,
+          "child_attributes_ms": 0.189,
+          "cold_open_ms": 512.079,
+          "warm_open_ms": 0.191,
+          "http_pages": 3,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 37,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.003,
+                "http_wait": 510.5,
+                "json_decode": 0.337,
+                "cache_fetch": 511.692,
+                "merge_children": 0.017,
+                "name_lookup": 0.005,
+                "lookup": 368.842,
+                "list_children": 511.772,
+                "names": 0.003
+              },
+              "counts": {
+                "path_components": 2,
+                "cache_miss": 3,
+                "http_pages": 3,
+                "http_items": 16,
+                "entries": 2
+              },
+              "status": "ok",
+              "total_ms": 511.79
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 38,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.003,
+                "merge_children": 0.018,
+                "name_lookup": 0.006,
+                "lookup": 0.06,
+                "attributes": 0.02
+              },
+              "counts": {
+                "path_components": 6,
+                "cache_hit": 6
+              },
+              "status": "ok",
+              "total_ms": 0.105
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 39,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.002,
+                "local_overlay": 0.004,
+                "merge_children": 0.015,
+                "name_lookup": 0.006,
+                "lookup": 0.062,
+                "list_children": 0.028,
+                "names": 0.002,
+                "attributes": 0.011
+              },
+              "counts": {
+                "path_components": 8,
+                "cache_hit": 9,
+                "entries": 2
+              },
+              "status": "ok",
+              "total_ms": 0.109
+            }
+          }
+        },
+        {
+          "cold_list_ms": 616.577,
+          "child_attributes_ms": 0.184,
+          "cold_open_ms": 616.761,
+          "warm_open_ms": 0.189,
+          "http_pages": 3,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 40,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.003,
+                "http_wait": 615.243,
+                "json_decode": 0.319,
+                "cache_fetch": 616.381,
+                "merge_children": 0.016,
+                "name_lookup": 0.005,
+                "lookup": 336.723,
+                "list_children": 616.456,
+                "names": 0.003
+              },
+              "counts": {
+                "path_components": 2,
+                "cache_miss": 3,
+                "http_pages": 3,
+                "http_items": 16,
+                "entries": 2
+              },
+              "status": "ok",
+              "total_ms": 616.474
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 41,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.003,
+                "merge_children": 0.017,
+                "name_lookup": 0.006,
+                "lookup": 0.058,
+                "attributes": 0.021
+              },
+              "counts": {
+                "path_components": 6,
+                "cache_hit": 6
+              },
+              "status": "ok",
+              "total_ms": 0.105
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 42,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.002,
+                "local_overlay": 0.004,
+                "merge_children": 0.015,
+                "name_lookup": 0.006,
+                "lookup": 0.062,
+                "list_children": 0.028,
+                "names": 0.002,
+                "attributes": 0.011
+              },
+              "counts": {
+                "path_components": 8,
+                "cache_hit": 9,
+                "entries": 2
+              },
+              "status": "ok",
+              "total_ms": 0.109
+            }
+          }
+        },
+        {
+          "cold_list_ms": 429.461,
+          "child_attributes_ms": 0.183,
+          "cold_open_ms": 429.644,
+          "warm_open_ms": 0.184,
+          "http_pages": 3,
+          "stages": {
+            "cold": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 43,
+              "operation": "cloud_cold_list",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.003,
+                "http_wait": 428.105,
+                "json_decode": 0.325,
+                "cache_fetch": 429.261,
+                "merge_children": 0.018,
+                "name_lookup": 0.005,
+                "lookup": 294.286,
+                "list_children": 429.341,
+                "names": 0.003
+              },
+              "counts": {
+                "path_components": 2,
+                "cache_miss": 3,
+                "http_pages": 3,
+                "http_items": 16,
+                "entries": 2
+              },
+              "status": "ok",
+              "total_ms": 429.36
+            },
+            "attributes": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 44,
+              "operation": "cloud_child_attributes",
+              "stages_ms": {
+                "lock_wait": 0.001,
+                "local_overlay": 0.003,
+                "merge_children": 0.018,
+                "name_lookup": 0.006,
+                "lookup": 0.059,
+                "attributes": 0.02
+              },
+              "counts": {
+                "path_components": 6,
+                "cache_hit": 6
+              },
+              "status": "ok",
+              "total_ms": 0.103
+            },
+            "warm": {
+              "event": "operation",
+              "pid": 57444,
+              "trace": 45,
+              "operation": "cloud_warm_open",
+              "stages_ms": {
+                "lock_wait": 0.002,
+                "local_overlay": 0.004,
+                "merge_children": 0.015,
+                "name_lookup": 0.006,
+                "lookup": 0.061,
+                "list_children": 0.028,
+                "names": 0.002,
+                "attributes": 0.01
+              },
+              "counts": {
+                "path_components": 8,
+                "cache_hit": 9,
+                "entries": 2
+              },
+              "status": "ok",
+              "total_ms": 0.106
+            }
+          }
+        }
+      ],
+      "entries": 2,
+      "manifest": "88ab8daf71dac20563e5dbebd5164b4c6c396948286e76742b19e812d57e7af6",
+      "core_median": {
+        "cold_list_ms": 507.207,
+        "child_attributes_ms": 0.189,
+        "cold_open_ms": 507.413,
+        "warm_open_ms": 0.19,
+        "http_pages": 3
+      },
+      "expired_open_ms": 603.932,
+      "after_expired_warm_ms": 1.051,
+      "mounted": [
+        {
+          "cold_open_ms": 467.257,
+          "warm_open_ms": 1.014,
+          "volume_space_ms": 0.638
+        },
+        {
+          "cold_open_ms": 490.731,
+          "warm_open_ms": 1.154,
+          "volume_space_ms": 0.689
+        },
+        {
+          "cold_open_ms": 476.576,
+          "warm_open_ms": 1.128,
+          "volume_space_ms": 0.599
+        }
+      ],
+      "mounted_median": {
+        "cold_open_ms": 476.576,
+        "warm_open_ms": 1.128,
+        "volume_space_ms": 0.638
+      }
+    }
+  ]
+}

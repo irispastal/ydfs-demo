@@ -27,7 +27,7 @@ def require_error(action, expected):
     raise AssertionError("operation unexpectedly succeeded")
 
 
-def run(root, case, wait):
+def run(root, case, wait, url_expiry_phase="full"):
     if case == "T4":
         with (root / "T3" / "large.bin").open("rb", buffering=0) as file:
             file.seek(9 * MIB)
@@ -37,7 +37,8 @@ def run(root, case, wait):
         assert data == PAYLOAD[9 * MIB:10 * MIB]
         return {"first_read_seconds": elapsed}
     folder = root / case
-    folder.mkdir()
+    if case != "T11" or url_expiry_phase != "read":
+        folder.mkdir()
     file = folder / "sample.bin"
     if case == "T1":
         (folder / "a").mkdir()
@@ -92,7 +93,10 @@ def run(root, case, wait):
             (folder / f"item-{index:03}").touch()
         assert sorted(item.name for item in folder.iterdir()) == [f"item-{i:03}" for i in range(250)]
     elif case == "T11":
-        file.write_bytes(PAYLOAD)
+        if url_expiry_phase != "read":
+            file.write_bytes(PAYLOAD)
+        if url_expiry_phase == "prepare":
+            return {}
         with file.open("rb", buffering=0) as stream:
             assert stream.read(1024) == PAYLOAD[:1024]
             time.sleep(wait)
@@ -113,6 +117,8 @@ def main():
     parser.add_argument("--suite", default=f"ydfs-e2e-{uuid4().hex}")
     parser.add_argument("--case", action="append", choices=[f"T{i}" for i in range(1, 14)])
     parser.add_argument("--wait-seconds", type=float, default=905)
+    parser.add_argument("--url-expiry-phase", choices=("full", "prepare", "read"), default="full",
+                        help="Split T11 across remounts to exclude local staging/OS cache hits")
     parser.add_argument("--cleanup", action="store_true")
     args = parser.parse_args()
     if not args.suite.startswith("ydfs-e2e-") or not all(
@@ -133,7 +139,7 @@ def main():
             print(json.dumps({"case": case, "status": "manual"}), flush=True)
             continue
         try:
-            metrics = run(root, case, args.wait_seconds)
+            metrics = run(root, case, args.wait_seconds, args.url_expiry_phase)
             status = "needs-server-evidence" if case in evidence else "pass"
             print(json.dumps({"case": case, "status": status, **metrics}), flush=True)
         except Exception as error:

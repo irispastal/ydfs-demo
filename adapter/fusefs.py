@@ -6,10 +6,11 @@ import stat
 from datetime import datetime
 from functools import wraps
 
-from fuse import FuseOSError, Operations
+from adapter.binding import FuseOSError, Operations
 
 from core.api.client import CloudError
 from core.fs import FsError
+from core.perf import stage, traced
 
 ERRORS = {
     "missing": errno.ENOENT, "exists": errno.EEXIST, "not-empty": errno.ENOTEMPTY,
@@ -53,20 +54,31 @@ class FuseFilesystem(Operations):
         self.read_only = read_only
 
     @callback
+    @traced("getattr", quiet=True)
     def getattr(self, path, fh=None):
         node = self.fs.lookup(path) if not fh else self.fs.handle_attributes(fh)
+        with stage("attributes"):
+            return self.attributes(node)
+
+    @staticmethod
+    def attributes(node):
         directory = node["type"] == "folder"
         modified = node.get("localUpdatedAt") or node.get("updatedAt")
         mtime = datetime.fromisoformat(modified.replace("Z", "+00:00")).timestamp() if modified else 0
+        created = node.get("localCreatedAt") or node.get("createdAt") or modified
+        birthtime = datetime.fromisoformat(created.replace("Z", "+00:00")).timestamp() if created else mtime
         mode = stat.S_IFDIR if directory else stat.S_IFREG
         permissions = 0o755 if directory or os.name == "nt" else 0o644
         return dict(st_mode=mode | permissions,
                     st_nlink=2 if directory else 1, st_size=0 if directory else node["size"], st_mtime=mtime,
-                    st_atime=mtime, st_ctime=mtime)
+                    st_atime=mtime, st_ctime=mtime, st_birthtime=birthtime)
 
     @callback
+    @traced("readdir")
     def readdir(self, path, fh):
-        return [".", "..", *(node["name"] for node in self.fs.list(path))]
+        nodes = self.fs.list(path)
+        with stage("names"):
+            return [".", "..", *(node["name"] for node in nodes)]
 
     @callback
     def open(self, path, flags):

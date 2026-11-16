@@ -1,0 +1,51 @@
+{
+  "view": "details",
+  "confirmed_root_entries": 12,
+  "confirmed_child_entries": 14,
+  "actions": [
+    "open_root",
+    "open_child",
+    "refresh_child",
+    "back_root",
+    "forward_child"
+  ],
+  "operation_counts": {
+    "statfs": 4,
+    "getattr": 438,
+    "native_readdir": 8,
+    "lookup": 56
+  },
+  "slow_operations": [
+    {
+      "event": "operation",
+      "pid": 106468,
+      "trace": 140,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 622.692,
+        "attributes": 0.021
+      },
+      "counts": {},
+      "status": "ok",
+      "target": "4d63246ebf13",
+      "total_ms": 622.745
+    },
+    {
+      "event": "operation",
+      "pid": 106468,
+      "trace": 143,
+      "operation": "getattr",
+      "stages_ms": {
+        "lock_wait": 532.25,
+        "lookup": 0.001,
+        "attributes": 0.008
+      },
+      "counts": {},
+      "status": "ok",
+      "target": "8a5edab28263",
+      "total_ms": 532.298
+    }
+  ],
+  "max_statfs_ms": 373.941,
+  "note": "Visual completion verified; automation input/snapshot durations are not UI frame timings."
+}

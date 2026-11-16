@@ -1,14 +1,17 @@
 import posixpath
 import logging
+from contextlib import contextmanager
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from functools import wraps
-from tempfile import TemporaryFile
-from threading import RLock
+from threading import Condition, RLock
 from time import monotonic
 
 from core.api.client import CloudError, MIB
 from core.io.reader import Reader
+from core.io.staging import StagedFile
 from core.meta.cache import DirectoryCache
+from core.perf import increment, stage, timed_stage, traced
 
 
 class FsError(Exception):
@@ -17,10 +20,20 @@ class FsError(Exception):
         super().__init__(kind)
 
 
+@contextmanager
+def state_lock(lock):
+    with stage("lock_wait"):
+        lock.acquire()
+    try:
+        yield
+    finally:
+        lock.release()
+
+
 def locked(method):
     @wraps(method)
     def call(self, *args, **kwargs):
-        with self.lock:
+        with state_lock(self.lock):
             return method(self, *args, **kwargs)
     return call
 
@@ -32,11 +45,13 @@ class Entry:
     dirty: bool = False
     unlinked: bool = False
     refs: int = 0
+    readers: int = 0
+    uploading: bool = False
 
     def attributes(self):
         if self.stream is None:
             return self.node
-        return {**self.node, "size": self.stream.seek(0, 2)}
+        return {**self.node, "size": self.stream.size}
 
 
 @dataclass
@@ -54,6 +69,7 @@ class Filesystem:
         self.cache = DirectoryCache(client, meta_ttl, ignore_case)
         self.reader = Reader(client, block_size)
         self.lock = RLock()
+        self.upload_changed = Condition(self.lock)
         self.active = {}
         self.handles = {}
         self.next_handle = 1
@@ -66,26 +82,45 @@ class Filesystem:
         if parent["type"] != "folder":
             raise FsError("not-directory")
         parent_id = parent["fileId"]
-        local = {self.cache.key(entry.node["name"]): entry.attributes()
-                 for entry in self.active.values()
-                 if not entry.unlinked and entry.stream is not None
-                 and entry.node["parentFileId"] == parent_id}
-        nodes = [node for node in self.cache.list(parent_id)
-                 if self.cache.key(node["name"]) not in local]
-        return nodes + list(local.values())
+        with stage("local_overlay"):
+            local = {self.cache.key(entry.node["name"]): entry.attributes()
+                     for entry in self.active.values()
+                     if not entry.unlinked and entry.stream is not None
+                     and entry.node["parentFileId"] == parent_id}
+        remote = self.cache.list(parent_id)
+        with stage("merge_children"):
+            if not local:
+                return list(remote)
+            nodes = [node for node in remote if self.cache.key(node["name"]) not in local]
+            return nodes + list(local.values())
 
+    def child(self, parent, name):
+        if parent["type"] != "folder":
+            raise FsError("not-directory")
+        with stage("local_overlay"):
+            key = self.cache.key(name)
+            local = None
+            for entry in self.active.values():
+                if (not entry.unlinked and entry.stream is not None
+                        and entry.node["parentFileId"] == parent["fileId"]
+                        and self.cache.key(entry.node["name"]) == key):
+                    local = entry
+            if local is not None:
+                return local.attributes()
+        return self.cache.lookup(parent["fileId"], name)
+
+    @traced("lookup", quiet=True)
     @locked
     def lookup(self, path):
-        node = self.root
-        for name in path.strip("/").split("/") if path != "/" else ():
-            nodes = self.children(node)
-            exact = next((item for item in nodes if item["name"] == name), None)
-            if exact is None and self.cache.ignore_case:
-                exact = next((item for item in nodes if item["name"].casefold() == name.casefold()), None)
-            if exact is None:
-                raise FsError("missing")
-            node = exact
-        return node
+        with stage("lookup"):
+            node = self.root
+            for name in path.strip("/").split("/") if path != "/" else ():
+                increment("path_components")
+                exact = self.child(node, name)
+                if exact is None:
+                    raise FsError("missing")
+                node = exact
+            return node
 
     def optional(self, path):
         try:
@@ -104,9 +139,13 @@ class Filesystem:
             raise FsError("not-directory")
         return node["fileId"], name
 
+    @traced("list")
     @locked
     def list(self, path):
-        return self.children(self.lookup(path))
+        with stage("list_children"):
+            nodes = self.children(self.lookup(path))
+        increment("entries", len(nodes))
+        return nodes
 
     @locked
     def mkdir(self, path):
@@ -126,8 +165,10 @@ class Filesystem:
         parent, name = self.destination(path)
         if self.optional(path) is not None:
             raise FsError("exists")
-        node = dict(parentFileId=parent, name=name, type="file", size=0, fileId=None)
-        entry = Entry(node, TemporaryFile(dir=self.cache_dir), dirty=True)
+        created = datetime.now(timezone.utc).isoformat()
+        node = dict(parentFileId=parent, name=name, type="file", size=0, fileId=None,
+                    createdAt=created, updatedAt=created)
+        entry = Entry(node, StagedFile(self.cache_dir, self.client.algorithm), dirty=True)
         self.active[id(entry)] = entry
         return self.register(entry, True)
 
@@ -144,6 +185,7 @@ class Filesystem:
         self.active[id(entry)] = entry
         return entry
 
+    @traced("open", quiet=True)
     @locked
     def open(self, path, writable=False):
         node = self.lookup(path)
@@ -157,6 +199,27 @@ class Filesystem:
             raise FsError("bad-handle")
         return item.entry
 
+    def ready_handle(self, handle, write=False):
+        """Called under the state lock; waiting releases it for other files."""
+        entry = self.handle(handle, write)
+        while entry.uploading:
+            with stage("upload_wait"):
+                self.upload_changed.wait()
+            entry = self.handle(handle, write)
+        return entry
+
+    def wait_uploads(self, *nodes):
+        for entry in self.active.values():
+            if entry.uploading and any(node is not None and (
+                    (node["fileId"] and entry.node["fileId"] == node["fileId"]) or
+                    (not node["fileId"] and entry.node["parentFileId"] == node["parentFileId"]
+                     and entry.node["name"] == node["name"])) for node in nodes):
+                with stage("upload_wait"):
+                    self.upload_changed.wait()
+                # Namespace bindings may have changed while the lock was released.
+                return True
+        return False
+
     @locked
     def handle_attributes(self, handle):
         return self.handle(handle).attributes()
@@ -164,7 +227,7 @@ class Filesystem:
     def stage(self, entry, empty=False):
         if entry.stream is not None:
             return
-        stream = TemporaryFile(dir=self.cache_dir)
+        stream = StagedFile(self.cache_dir, self.client.algorithm)
         try:
             if not empty:
                 size = entry.node["size"]
@@ -175,24 +238,65 @@ class Filesystem:
             raise
         entry.stream = stream
 
-    @locked
+    @traced("read", quiet=True)
     def read(self, handle, offset, size):
-        entry = self.handle(handle)
-        if entry.stream is None:
-            return self.reader.read(entry.node, offset, size)
-        entry.stream.seek(offset)
-        return entry.stream.read(size)
+        with state_lock(self.lock):
+            entry = self.handle(handle)
+            # release() may remove the handle while the transfer is in flight.
+            # Keep the entry and any subsequently created staging stream alive.
+            entry.readers += 1
+            node = dict(entry.node)
+        increment("requested_bytes", size)
+        try:
+            with state_lock(self.lock):
+                remote = entry.stream is None
+            if not remote:
+                data = self.local_read(entry, offset, size)
+            if remote:
+                try:
+                    with stage("read_blocks"):
+                        data = self.reader.read(node, offset, size)
+                except (CloudError, OSError):
+                    # Unlink may have staged the open file and revoked its URL.
+                    with state_lock(self.lock):
+                        if entry.stream is None:
+                            raise
+                    data = self.local_read(entry, offset, size)
+                else:
+                    with state_lock(self.lock):
+                        # Writes, truncate and unlink remain serialized by the
+                        # state lock. Prefer their current local contents.
+                        local = entry.stream is not None
+                    if local:
+                        data = self.local_read(entry, offset, size)
+            increment("returned_bytes", len(data))
+            return data
+        finally:
+            with state_lock(self.lock):
+                entry.readers -= 1
+                self.retire(entry)
+
+    def local_read(self, entry, offset, size):
+        with stage("local_read"):
+            return entry.stream.read_at(offset, size)
+
+    def retire(self, entry):
+        # Called with the state lock held; active entries also protect unlink's
+        # staging pass when the last handle has closed during a remote read.
+        if not entry.refs and not entry.readers and not entry.uploading:
+            self.active.pop(id(entry), None)
+            if entry.stream is not None:
+                entry.stream.close()
 
     @locked
     def write(self, handle, offset, data):
-        entry = self.handle(handle, write=True)
+        entry = self.ready_handle(handle, write=True)
         self.stage(entry)
         entry.stream.seek(offset)
         written = entry.stream.write(data)
         entry.dirty = True
         return written
 
-    @locked
     def truncate(self, path, size, handle=None):
         if handle is None:
             handle = self.open(path, True)
@@ -201,47 +305,63 @@ class Filesystem:
             finally:
                 self.release(handle)
             return
-        entry = self.handle(handle, write=True)
-        self.stage(entry, empty=size == 0)
-        entry.stream.truncate(size)
-        entry.dirty = True
+        with state_lock(self.lock):
+            entry = self.ready_handle(handle, write=True)
+            self.stage(entry, empty=size == 0)
+            entry.stream.truncate(size)
+            entry.dirty = True
 
-    @locked
+    @traced("flush", quiet=True, prefix="upload-perf")
     def flush(self, handle):
-        entry = self.handle(handle)
-        if entry.unlinked or not entry.dirty:
-            return
-        node = entry.node
-        parent, name, file_id = (node[key] for key in ("parentFileId", "name", "fileId"))
-        entry.stream.flush()
-        try:
-            committed = self.client.upload(parent, name, entry.stream, file_id)
-        except CloudError as error:
-            if file_id or error.code != "04010330":
-                raise
-            match = next((item for item in self.client.list(parent)
-                          if item["name"].casefold() == name.casefold()
-                          and item["type"] == "file"), None)
-            if match is None:
-                raise
-            committed = self.client.upload(parent, match["name"], entry.stream, match["fileId"])
-        entry.node = committed
-        entry.dirty = False
-        self.reader.invalidate(committed["fileId"])
-        self.cache.invalidate(parent)
+        self.commit(handle)
 
-    @locked
+    @traced("release", quiet=True, prefix="upload-perf")
     def release(self, handle):
-        entry = self.handle(handle)
+        self.commit(handle, release=True)
+
+    def close_handle(self, handle, entry):
+        del self.handles[handle]
+        entry.refs -= 1
+        self.retire(entry)
+
+    def commit(self, handle, release=False):
+        with state_lock(self.lock):
+            entry = self.ready_handle(handle)
+            if entry.unlinked or not entry.dirty:
+                if release:
+                    self.close_handle(handle, entry)
+                return
+            parent, name, file_id = (entry.node[key] for key in ("parentFileId", "name", "fileId"))
+            entry.uploading = True
+        # The entry stays alive and immutable until publication. Same-file
+        # mutations wait on the condition, without holding the state lock.
         try:
-            self.flush(handle)
+            with timed_stage("upload_local_flush"):
+                entry.stream.flush()
+            try:
+                committed = self.client.upload(parent, name, entry.stream, file_id)
+            except CloudError as error:
+                if file_id or error.code != "04010330":
+                    raise
+                with timed_stage("upload_conflict_lookup"):
+                    match = next((item for item in self.client.list(parent)
+                                  if item["name"].casefold() == name.casefold()
+                                  and item["type"] == "file"), None)
+                if match is None:
+                    raise
+                committed = self.client.upload(parent, match["name"], entry.stream, match["fileId"])
+            with state_lock(self.lock):
+                entry.node = committed
+                entry.dirty = False
+                self.reader.invalidate(committed["fileId"])
+                self.cache.invalidate(parent)
         finally:
-            del self.handles[handle]
-            entry.refs -= 1
-            if not entry.refs:
-                self.active.pop(id(entry))
-                if entry.stream is not None:
-                    entry.stream.close()
+            with state_lock(self.lock):
+                if release:
+                    self.close_handle(handle, entry)
+                entry.uploading = False
+                self.upload_changed.notify_all()
+                self.retire(entry)
 
     def discard(self, node):
         file_id = node["fileId"]
@@ -262,6 +382,8 @@ class Filesystem:
     @locked
     def remove(self, path, directory=False):
         node = self.lookup(path)
+        while self.wait_uploads(node):
+            node = self.lookup(path)
         if node is self.root:
             raise FsError("invalid")
         if directory and node["type"] != "folder":
@@ -275,6 +397,10 @@ class Filesystem:
     @locked
     def rename(self, source, target):
         node = self.lookup(source)
+        existing = self.optional(target)
+        while self.wait_uploads(node, existing):
+            node = self.lookup(source)
+            existing = self.optional(target)
         if node is self.root:
             raise FsError("invalid")
         parent, name = self.destination(target)
@@ -287,7 +413,6 @@ class Filesystem:
             raise FsError("name-too-long")
         if node["type"] == "folder" and target.startswith(source.rstrip("/") + "/"):
             raise FsError("invalid")
-        existing = self.optional(target)
         if existing is not None and not (file_id and existing["fileId"] == file_id):
             if existing["type"] != node["type"]:
                 raise FsError("is-directory" if existing["type"] == "folder" else "not-directory")
@@ -308,14 +433,16 @@ class Filesystem:
                 entry.node = {**entry.node, "parentFileId": parent, "name": name}
         finally:
             self.cache.invalidate(old_parent, parent)
-            if entry and not entry.refs:
-                self.active.pop(id(entry), None)
+            if entry:
+                self.retire(entry)
 
+    @traced("statfs", quiet=True)
     def statfs(self):
         with self.disk_space_lock:
             if self.disk_space and monotonic() >= self.disk_space_refresh:
                 try:
-                    self.disk_space_bytes = self.disk_space()
+                    with stage("disk_space_request"):
+                        self.disk_space_bytes = self.disk_space()
                 except CloudError as error:
                     logging.warning("Could not refresh cloud disk space: %s", error)
                     self.disk_space_refresh = monotonic() + 10

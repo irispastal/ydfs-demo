@@ -2,9 +2,23 @@
 
 ## 结论
 
-Windows WinFsp 和 WSL Ubuntu 24.04 的 Linux FUSE 挂载均通过本地模拟服务下的 T1–T12。Windows 连接中国移动云盘生产 SaaS，实测通过 T1–T10 和 T12，并通过客户端缓存过期触发重新取址的验证。3 项无挂载 HTTP 测试通过。手动 T13 仍待完成，WSL 直连生产 SaaS 超时。
+2026-11-16 升级后，Linux FUSE 3 和 Windows WinFsp FUSE 3 的普通盘、网络盘均通过本地模拟服务下的 T1–T12 及服务端证据核对。此前 Windows 连接中国移动云盘生产 SaaS，实测通过 T1–T10 和 T12，并通过客户端缓存过期触发重新取址的验证。手动 T13 仍待完成；本次没有重新执行生产 SaaS 写入。
+
+## FUSE 3 升级验证（2026-11-16）
+
+- Linux：WSL Ubuntu、Python 3.14.4、mfusepy 3.1.1，`python -m cmd.ydfs --version` 确认实际加载 libfuse 3.18。使用系统的 fusermount3 卸载，完成重挂与随机读取。
+- Windows：x64 Python 3.14.3、WinFsp 2.1.25156，`--version` 显示 `ctypes / WinFsp FUSE 3.2 (fuse3_main_real)`。在没有安装 fusepy、mfusepy 或其他第三方包的全新 venv 中，完成 X: 网络盘、Z: 普通盘的挂载、重挂、T1–T12 及服务端证据核对；两种挂载上的测试可执行文件均能运行。原有 Y: 挂载未用于本次测试。
+- Windows 的 7 项单元/协议测试通过：3 项 HTTP 协议测试、4 项原生回调 ABI 测试。ABI 测试覆盖 WinFsp 3.2 的结构偏移、超过 32 位的句柄/偏移/大小、含 NUL 的二进制缓冲、五参数目录 filler、错误转译及 rename 标志保护。Linux 的 3 项协议测试通过，4 项 Windows 测试按平台跳过。
+- Linux 额外通过 `test/e2e/fuse3_semantics.py`：renameat2 的禁止覆盖/交换/whiteout 不会被静默当作普通改名；目标不存在时的 NOREPLACE 明确返回 EOPNOTSUPP；覆盖已打开目标后，旧句柄继续读取旧内容；打开句柄的 truncate/fstat/fsync 生效；打开后删除仍可读写，最后关闭不恢复文件名。
+- 两种 Windows 挂载均通过 `test/e2e/windows_semantics.py`：中文/emoji 名称及二进制内容；共享模式阻止冲突的写入、删除、改名；独占字节范围锁阻止另一个句柄读取，解锁后可读；普通 MoveFileEx 覆盖打开目标返回 WinError 5，关闭后替换成功；ReplaceFileW 更新内容并移除暂存名称；句柄截断/GetFileSizeEx/FlushFileBuffers；允许共享删除的打开句柄在删除后仍能读写，关闭后不复活文件。相同测试已在本机 NTFS 临时目录通过对照。
+- Windows 的只读 `--smoke` 挂载在 W: 验证通过：hello.txt 内容及目录列表正确，拒绝新建文件，结束进程后盘符移除。各次验证结束后均卸载测试盘符。
+- 以上均为本地模拟服务验证，只证明本挂载中的行为。普通覆盖改名仍由多次远程请求组成，未获得跨客户端原子性；Linux libfuse 对打开文件的隐藏名称处理也不等于服务端具有打开租约。
+- Windows 绑定直接使用 WinFsp 面向 FFI 的 `fuse3_*` 导出；WinFsp 内部如何复用其 FUSE 2 实现是驱动的实现细节。缺少 FUSE 3 导出或版本不是 3.2 时明确失败，没有回退到旧接口。实现参考 [WinFsp FFI 导出说明](https://github.com/winfsp/winfsp/blob/master/src/dll/fuse3/fuse3_compat.c) 与 [FUSE 3 结构声明](https://github.com/winfsp/winfsp/blob/master/inc/fuse3/fuse_common.h)。
+- 尚未完成真实资源管理器、Word/Excel 或多客户端并发验收；上述锁仅验证单个挂载中的 Win32 行为。POSIX 扩展改名未验证，不能由普通 MoveFileEx 的测试推断。ARM64 尚未实测，32 位 Python 未支持。服务端需求与验收清单见 [SERVER_REQUIREMENTS.md](SERVER_REQUIREMENTS.md)。
 
 ## 生产 SaaS 验证
+
+创建时间修复（2026-11-16）：`getattr` 原先没有返回 `st_birthtime`，导致 Windows 原生结构的创建时间为 0，资源管理器显示为 1970-01-01 08:00。现按 `localCreatedAt → createdAt → 修改时间` 映射，修改时间保持原有语义。新增原生回调回归测试在修复前复现 0 与云端时间不一致，修复后通过；Windows 共 9 项单元/协议测试、网络盘 T1–T12 及创建时间检查通过，Linux 挂载回归通过。已重启 Y:，只读核验 `ydfs-domo-t13` 的创建时间为 2026-11-15 17:39:46.017（UTC+08:00），与云端字段一致；没有改写云端时间。
 
 - 使用已建好的专用目录作为 Windows 挂载根。目录列表返回业务码 `0000`。挂载用例覆盖多级目录、小文件读写、23 MiB 分片文件写入、重挂后随机读、追加、空文件、改名、移动、替换、删除、250 项分页和 Windows 大小写路径。
 - 独立调用 Demo 客户端上传随机生成的 23 MiB 文件。取址和 `complete` 均返回 `0000`。EOS 分别接收 10、10、3 MiB，三次 PUT 均返回 HTTP 200。

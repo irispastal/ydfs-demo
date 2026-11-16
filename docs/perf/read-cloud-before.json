@@ -1,0 +1,293 @@
+{
+  "measured_at": "2026-11-16T10:02:47.653053+00:00",
+  "read_only": true,
+  "requested_bytes": 32,
+  "samples": [
+    {
+      "target": "704caaa95120",
+      "file_size": 2725780,
+      "entries": 12,
+      "header_hash": "34b9348ecccb09747637e5bdaa744e48362a9e684b260766e49868f2e50cecab",
+      "directory_ms": 272.334,
+      "directory_lock_wait_ms": 272.166,
+      "directory_finished_before_read": false,
+      "read_ms": 272.294,
+      "downloaded_bytes": 2725780,
+      "operations": [
+        {
+          "event": "operation",
+          "pid": 75228,
+          "trace": 3,
+          "operation": "probe_read",
+          "stages_ms": {
+            "lock_wait": 0.001,
+            "http_wait": 120.982,
+            "json_decode": 0.037,
+            "download_url": 121.176,
+            "range_read": 151.041,
+            "read_blocks": 272.262
+          },
+          "counts": {
+            "requested_bytes": 32,
+            "block_cache_miss": 1,
+            "downloaded_bytes": 2725780,
+            "returned_bytes": 32
+          },
+          "status": "ok",
+          "total_ms": 272.294
+        },
+        {
+          "event": "operation",
+          "pid": 75228,
+          "trace": 4,
+          "operation": "probe_directory",
+          "stages_ms": {
+            "lock_wait": 272.166,
+            "lookup": 0.07,
+            "local_overlay": 0.014,
+            "merge_children": 0.001,
+            "list_children": 0.029,
+            "name_lookup": 0.006
+          },
+          "counts": {
+            "cache_hit": 13,
+            "entries": 12,
+            "path_components": 12
+          },
+          "status": "ok",
+          "total_ms": 272.337
+        }
+      ]
+    },
+    {
+      "target": "704caaa95120",
+      "file_size": 2725780,
+      "entries": 12,
+      "header_hash": "34b9348ecccb09747637e5bdaa744e48362a9e684b260766e49868f2e50cecab",
+      "directory_ms": 262.666,
+      "directory_lock_wait_ms": 262.507,
+      "directory_finished_before_read": false,
+      "read_ms": 262.71,
+      "downloaded_bytes": 2725780,
+      "operations": [
+        {
+          "event": "operation",
+          "pid": 75228,
+          "trace": 7,
+          "operation": "probe_read",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "http_wait": 120.957,
+            "json_decode": 0.035,
+            "download_url": 121.151,
+            "range_read": 141.473,
+            "read_blocks": 262.674
+          },
+          "counts": {
+            "requested_bytes": 32,
+            "block_cache_miss": 1,
+            "downloaded_bytes": 2725780,
+            "returned_bytes": 32
+          },
+          "status": "ok",
+          "total_ms": 262.71
+        },
+        {
+          "event": "operation",
+          "pid": 75228,
+          "trace": 8,
+          "operation": "probe_directory",
+          "stages_ms": {
+            "lock_wait": 262.507,
+            "lookup": 0.064,
+            "local_overlay": 0.014,
+            "merge_children": 0.001,
+            "list_children": 0.025,
+            "name_lookup": 0.005
+          },
+          "counts": {
+            "cache_hit": 13,
+            "entries": 12,
+            "path_components": 12
+          },
+          "status": "ok",
+          "total_ms": 262.67
+        }
+      ]
+    },
+    {
+      "target": "704caaa95120",
+      "file_size": 2725780,
+      "entries": 12,
+      "header_hash": "34b9348ecccb09747637e5bdaa744e48362a9e684b260766e49868f2e50cecab",
+      "directory_ms": 263.344,
+      "directory_lock_wait_ms": 263.192,
+      "directory_finished_before_read": false,
+      "read_ms": 263.253,
+      "downloaded_bytes": 2725780,
+      "operations": [
+        {
+          "event": "operation",
+          "pid": 75228,
+          "trace": 11,
+          "operation": "probe_read",
+          "stages_ms": {
+            "lock_wait": 0.001,
+            "http_wait": 117.88,
+            "json_decode": 0.048,
+            "download_url": 118.052,
+            "range_read": 145.136,
+            "read_blocks": 263.224
+          },
+          "counts": {
+            "requested_bytes": 32,
+            "block_cache_miss": 1,
+            "downloaded_bytes": 2725780,
+            "returned_bytes": 32
+          },
+          "status": "ok",
+          "total_ms": 263.253
+        },
+        {
+          "event": "operation",
+          "pid": 75228,
+          "trace": 12,
+          "operation": "probe_directory",
+          "stages_ms": {
+            "lock_wait": 263.192,
+            "lookup": 0.062,
+            "local_overlay": 0.011,
+            "merge_children": 0.001,
+            "list_children": 0.022,
+            "name_lookup": 0.005
+          },
+          "counts": {
+            "cache_hit": 13,
+            "entries": 12,
+            "path_components": 12
+          },
+          "status": "ok",
+          "total_ms": 263.347
+        }
+      ]
+    },
+    {
+      "target": "704caaa95120",
+      "file_size": 2725780,
+      "entries": 12,
+      "header_hash": "34b9348ecccb09747637e5bdaa744e48362a9e684b260766e49868f2e50cecab",
+      "directory_ms": 235.154,
+      "directory_lock_wait_ms": 234.925,
+      "directory_finished_before_read": false,
+      "read_ms": 234.949,
+      "downloaded_bytes": 2725780,
+      "operations": [
+        {
+          "event": "operation",
+          "pid": 75228,
+          "trace": 15,
+          "operation": "probe_read",
+          "stages_ms": {
+            "lock_wait": 0.001,
+            "http_wait": 115.851,
+            "json_decode": 0.036,
+            "download_url": 116.005,
+            "range_read": 118.881,
+            "read_blocks": 234.922
+          },
+          "counts": {
+            "requested_bytes": 32,
+            "block_cache_miss": 1,
+            "downloaded_bytes": 2725780,
+            "returned_bytes": 32
+          },
+          "status": "ok",
+          "total_ms": 234.949
+        },
+        {
+          "event": "operation",
+          "pid": 75228,
+          "trace": 16,
+          "operation": "probe_directory",
+          "stages_ms": {
+            "lock_wait": 234.925,
+            "lookup": 0.1,
+            "local_overlay": 0.017,
+            "merge_children": 0.002,
+            "list_children": 0.03,
+            "name_lookup": 0.008
+          },
+          "counts": {
+            "cache_hit": 13,
+            "entries": 12,
+            "path_components": 12
+          },
+          "status": "ok",
+          "total_ms": 235.157
+        }
+      ]
+    },
+    {
+      "target": "704caaa95120",
+      "file_size": 2725780,
+      "entries": 12,
+      "header_hash": "34b9348ecccb09747637e5bdaa744e48362a9e684b260766e49868f2e50cecab",
+      "directory_ms": 274.769,
+      "directory_lock_wait_ms": 274.621,
+      "directory_finished_before_read": false,
+      "read_ms": 274.686,
+      "downloaded_bytes": 2725780,
+      "operations": [
+        {
+          "event": "operation",
+          "pid": 75228,
+          "trace": 19,
+          "operation": "probe_read",
+          "stages_ms": {
+            "lock_wait": 0.001,
+            "http_wait": 121.868,
+            "json_decode": 0.034,
+            "download_url": 122.014,
+            "range_read": 152.613,
+            "read_blocks": 274.66
+          },
+          "counts": {
+            "requested_bytes": 32,
+            "block_cache_miss": 1,
+            "downloaded_bytes": 2725780,
+            "returned_bytes": 32
+          },
+          "status": "ok",
+          "total_ms": 274.686
+        },
+        {
+          "event": "operation",
+          "pid": 75228,
+          "trace": 20,
+          "operation": "probe_directory",
+          "stages_ms": {
+            "lock_wait": 274.621,
+            "lookup": 0.06,
+            "local_overlay": 0.012,
+            "merge_children": 0.001,
+            "list_children": 0.022,
+            "name_lookup": 0.005
+          },
+          "counts": {
+            "cache_hit": 13,
+            "entries": 12,
+            "path_components": 12
+          },
+          "status": "ok",
+          "total_ms": 274.771
+        }
+      ]
+    }
+  ],
+  "median": {
+    "directory_ms": 263.344,
+    "directory_lock_wait_ms": 263.192,
+    "read_ms": 263.253,
+    "downloaded_bytes": 2725780
+  }
+}
